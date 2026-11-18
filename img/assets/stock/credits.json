@@ -1,0 +1,50 @@
+[
+  {
+    "id": "hero",
+    "query": "facial skincare aesthetic clinic treatment",
+    "status": "ok",
+    "provider": "pixabay",
+    "path": "assets/stock/hero.jpg",
+    "alt": "makeup, spa, skin, skincare, massage, care, health, wellness, relaxation, treatment, body, woman, young, relax, healthy, salon, skincare, skincare, skincare, skincare, skincare",
+    "author": "spabielenda",
+    "authorUrl": "https://pixabay.com/users/spabielenda-15378103/",
+    "sourceUrl": "https://pixabay.com/photos/makeup-spa-skin-skincare-massage-4912678/",
+    "license": "Pixabay Content License (https://pixabay.com/service/license-summary/)"
+  },
+  {
+    "id": "cabinet",
+    "query": "modern medical clinic room minimalist white",
+    "status": "ok",
+    "provider": "pixabay",
+    "path": "assets/stock/cabinet.jpg",
+    "alt": "surgery, hospital, medical professionals, doctor, nurses, healthcare, operating room, care, clinic, emergency, group, team, health, medical masks, medical, nurse, professionals, physician, surgeons, medicine, scrubs, operation, surgery, surgery, hospital, hospital, hospital, hospital, doctor, doctor, doctor, doctor, doctor, healthcare, health, medical, medical, medical",
+    "author": "sasint",
+    "authorUrl": "https://pixabay.com/users/sasint-3639875/",
+    "sourceUrl": "https://pixabay.com/photos/surgery-hospital-1807541/",
+    "license": "Pixabay Content License (https://pixabay.com/service/license-summary/)"
+  },
+  {
+    "id": "skincare",
+    "query": "clinical skincare serum dropper glass bottle",
+    "status": "ok",
+    "provider": "pixabay",
+    "path": "assets/stock/skincare.jpg",
+    "alt": "dropper, bottle, oil, massage, beauty, glass, drop, pipette, cosmetology, dropper, dropper, dropper, pipette, pipette, cosmetology, cosmetology, cosmetology, cosmetology, cosmetology",
+    "author": "OlgaVolkovitskaia",
+    "authorUrl": "https://pixabay.com/users/OlgaVolkovitskaia-24306566/",
+    "sourceUrl": "https://pixabay.com/photos/dropper-bottle-oil-massage-beauty-6939339/",
+    "license": "Pixabay Content License (https://pixabay.com/service/license-summary/)"
+  },
+  {
+    "id": "treatment",
+    "query": "aesthetician dermatologist facial skin care",
+    "status": "ok",
+    "provider": "pixabay",
+    "path": "assets/stock/treatment.jpg",
+    "alt": "woman, wellness, spa, relaxation, cucumber, facial, skincare, skin, treatment, therapy, cosmetics, cream, face, spa, facial, skincare, skincare, skincare, skincare, skincare",
+    "author": "Tumisu",
+    "authorUrl": "https://pixabay.com/users/Tumisu-148124/",
+    "sourceUrl": "https://pixabay.com/photos/woman-wellness-spa-relaxation-6557552/",
+    "license": "Pixabay Content License (https://pixabay.com/service/license-summary/)"
+  }
+]

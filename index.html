@@ -1,0 +1,2917 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Косметологический кабинет «Облака» — Врачебная и эстетическая косметология в Твери</title>
+  <meta name="description" content="Лицензированный кабинет эстетической и врачебной косметологии «Облака». Атравматичные чистки, уходы для чувствительной кожи, пилинги, биолифтинг. Запись на приём.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/assets/logo-oblaka.png">
+
+  <!-- Google Fonts: Montserrat (Headings) & Roboto (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM & VARIABLES (Solus & Elevated Wellness Aesthetics)
+       ========================================================================== */
+    :root {
+      /* Palette */
+      --bg-page: #FAF7F2;          /* Soft warm linen / cream background */
+      --bg-card: #FFFFFF;          /* Pure card surface */
+      --bg-warm: #F4ECE1;          /* Warm sand card */
+      --bg-peach: #FBEEDC;         /* Soft pastel peach */
+      --bg-mint: #E2EFE9;          /* Soft sage / mint */
+      --bg-butter: #FFF2D6;        /* Soft butter yellow */
+      --bg-blush: #F7E4E9;         /* Soft blush */
+      
+      /* Inks & Text */
+      --ink-dark: #132A22;         /* Deep spruce / dark forest pine */
+      --ink-body: #2C3531;         /* Readable deep charcoal */
+      --ink-muted: #6B7770;        /* Muted sage-grey */
+      --ink-light: #FAF7F2;        /* Light cream text for dark cards */
+      
+      /* Borders & Shadows */
+      --border-subtle: rgba(19, 42, 34, 0.08);
+      --border-strong: rgba(19, 42, 34, 0.16);
+      --border-dark: rgba(250, 247, 242, 0.15);
+      --shadow-sm: 0 2px 8px rgba(19, 42, 34, 0.04);
+      --shadow-md: 0 10px 30px rgba(19, 42, 34, 0.06);
+      --shadow-lg: 0 16px 48px rgba(19, 42, 34, 0.10);
+
+      /* Typography */
+      --font-heading: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-body: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+
+      /* Spacing & Radii */
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 28px;
+      --radius-xl: 36px;
+      --radius-pill: 9999px;
+
+      --container-max: 1240px;
+      --section-spacing: 96px;
+      --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Base Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: var(--ink-body);
+      font-family: var(--font-body);
+      font-weight: 400;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Typography Defaults */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      color: var(--ink-dark);
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+    }
+
+    p {
+      color: var(--ink-body);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+      font-size: inherit;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    @media (max-width: 768px) {
+      :root {
+        --section-spacing: 64px;
+        --radius-lg: 22px;
+        --radius-xl: 26px;
+      }
+      .container {
+        padding: 0 16px;
+      }
+    }
+
+    /* Accessible focus state */
+    :focus-visible {
+      outline: 2px solid var(--ink-dark);
+      outline-offset: 3px;
+    }
+
+    /* ==========================================================================
+       BUTTONS & BADGES (Pill architecture)
+       ========================================================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all var(--transition-smooth);
+      min-height: 48px;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-primary {
+      background-color: var(--ink-dark);
+      color: #FFFFFF;
+      box-shadow: 0 6px 18px rgba(19, 42, 34, 0.18);
+    }
+
+    .btn-primary:hover {
+      background-color: #0d1e18;
+      box-shadow: 0 8px 24px rgba(19, 42, 34, 0.28);
+      transform: translateY(-2px);
+      color: #FFFFFF;
+    }
+
+    .btn-secondary {
+      background-color: #FFFFFF;
+      color: var(--ink-dark);
+      border-color: var(--border-subtle);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--bg-warm);
+      border-color: var(--ink-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      background-color: transparent;
+      color: var(--ink-dark);
+      border-color: var(--border-strong);
+    }
+
+    .btn-ghost:hover {
+      background-color: rgba(19, 42, 34, 0.05);
+      border-color: var(--ink-dark);
+    }
+
+    .btn-light {
+      background-color: #FFFFFF;
+      color: var(--ink-dark);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    }
+
+    .btn-light:hover {
+      background-color: var(--bg-peach);
+      transform: translateY(-2px);
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-heading);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background-color: var(--bg-warm);
+      color: var(--ink-dark);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .badge-pill.peach {
+      background-color: var(--bg-peach);
+      color: #7D4507;
+      border-color: rgba(125, 69, 7, 0.12);
+    }
+
+    .badge-pill.mint {
+      background-color: var(--bg-mint);
+      color: #1A543B;
+      border-color: rgba(26, 84, 59, 0.12);
+    }
+
+    .badge-pill.light {
+      background-color: rgba(255, 255, 255, 0.15);
+      color: #FAF7F2;
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    /* ==========================================================================
+       SITE HEADER
+       ========================================================================== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: rgba(250, 247, 242, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: background-color var(--transition-fast);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 76px;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      background-color: #FFFFFF;
+      padding: 2px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .brand-title {
+      font-family: var(--font-heading);
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--ink-dark);
+      letter-spacing: -0.01em;
+    }
+
+    .brand-subtitle {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--ink-muted);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-family: var(--font-heading);
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink-muted);
+      transition: color var(--transition-fast);
+      position: relative;
+    }
+
+    .nav-link:hover {
+      color: var(--ink-dark);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .header-phone {
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink-dark);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .header-phone:hover {
+      color: #0A1713;
+      text-decoration: underline;
+    }
+
+    .burger-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+      background-color: #FFFFFF;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink-dark);
+    }
+
+    /* Mobile Drawer */
+    .mobile-drawer {
+      display: none;
+      position: fixed;
+      top: 76px;
+      left: 0;
+      width: 100%;
+      background-color: var(--bg-page);
+      border-bottom: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-md);
+      padding: 24px;
+      z-index: 99;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .mobile-drawer.open {
+      display: flex;
+    }
+
+    .mobile-drawer .nav-link {
+      font-size: 17px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(19, 42, 34, 0.05);
+      display: block;
+    }
+
+    @media (max-width: 1080px) {
+      .nav-menu, .header-phone {
+        display: none;
+      }
+      .burger-btn {
+        display: inline-flex;
+      }
+    }
+
+    /* ==========================================================================
+       HERO SECTION (Wellness Solus Style)
+       ========================================================================== */
+    .hero-section {
+      padding: 40px 0 var(--section-spacing) 0;
+    }
+
+    .hero-banner {
+      background-color: var(--bg-warm);
+      border: 1px solid rgba(19, 42, 34, 0.06);
+      border-radius: var(--radius-xl);
+      padding: 56px 64px;
+      box-shadow: var(--shadow-sm);
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 56px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      z-index: 2;
+    }
+
+    .hero-eyebrow {
+      align-self: flex-start;
+    }
+
+    .hero-title {
+      font-size: clamp(32px, 4.4vw, 54px);
+      font-weight: 800;
+      line-height: 1.12;
+      color: var(--ink-dark);
+      letter-spacing: -0.025em;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(16px, 1.8vw, 18.5px);
+      line-height: 1.6;
+      color: var(--ink-body);
+      max-width: 52ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      margin-top: 8px;
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      margin-top: 16px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(19, 42, 34, 0.1);
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-val {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--ink-dark);
+    }
+
+    .stat-lbl {
+      font-size: 13px;
+      color: var(--ink-muted);
+    }
+
+    /* Hero Media Frame */
+    .hero-media-wrapper {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-image-card {
+      width: 100%;
+      height: 480px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      border: 4px solid #FFFFFF;
+    }
+
+    .hero-image-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-floating-card {
+      position: absolute;
+      bottom: -20px;
+      left: -24px;
+      background-color: #FFFFFF;
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      max-width: 290px;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .floating-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background-color: var(--bg-mint);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink-dark);
+      flex-shrink: 0;
+    }
+
+    .floating-text strong {
+      font-family: var(--font-heading);
+      display: block;
+      font-size: 13.5px;
+      color: var(--ink-dark);
+    }
+
+    .floating-text span {
+      font-size: 11.5px;
+      color: var(--ink-muted);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @media (max-width: 1024px) {
+      .hero-banner {
+        grid-template-columns: 1fr;
+        padding: 40px 32px;
+        gap: 40px;
+      }
+      .hero-image-card {
+        height: 380px;
+      }
+      .hero-floating-card {
+        bottom: 12px;
+        left: 12px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-banner {
+        padding: 28px 18px;
+        border-radius: var(--radius-lg);
+      }
+      .hero-actions .btn {
+        width: 100%;
+      }
+      .hero-image-card {
+        height: 280px;
+      }
+      .hero-floating-card {
+        position: static;
+        margin-top: 16px;
+        max-width: 100%;
+      }
+    }
+
+    /* ==========================================================================
+       SECTION COMMONS
+       ========================================================================== */
+    .section-wrap {
+      padding: var(--section-spacing) 0;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 56px auto;
+    }
+
+    .section-header.text-left {
+      text-align: left;
+      margin-left: 0;
+    }
+
+    .section-title {
+      font-size: clamp(26px, 3.2vw, 40px);
+      margin: 14px 0 16px 0;
+      color: var(--ink-dark);
+    }
+
+    .section-desc {
+      font-size: 17px;
+      color: var(--ink-muted);
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       PILLARS / ADVANTAGES (Warm Pastel Cards)
+       ========================================================================== */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .pillar-card {
+      border-radius: var(--radius-lg);
+      padding: 32px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      border: 1px solid transparent;
+      transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .pillar-card.peach { background-color: var(--bg-peach); border-color: rgba(125, 69, 7, 0.08); }
+    .pillar-card.mint { background-color: var(--bg-mint); border-color: rgba(26, 84, 59, 0.08); }
+    .pillar-card.warm { background-color: var(--bg-warm); border-color: var(--border-subtle); }
+    .pillar-card.dark {
+      background-color: var(--ink-dark);
+      color: #FFFFFF;
+      box-shadow: var(--shadow-md);
+    }
+
+    .pillar-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink-dark);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .pillar-card.dark .pillar-icon {
+      background-color: rgba(255, 255, 255, 0.15);
+      color: #FFFFFF;
+    }
+
+    .pillar-title {
+      font-size: 19px;
+      font-weight: 700;
+      margin-top: 8px;
+      color: inherit;
+    }
+
+    .pillar-card.dark .pillar-title {
+      color: #FFFFFF;
+    }
+
+    .pillar-desc {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: var(--ink-muted);
+    }
+
+    .pillar-card.dark .pillar-desc {
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    @media (max-width: 1024px) {
+      .pillars-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .pillars-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ==========================================================================
+       SERVICES BENTO CATALOG
+       ========================================================================== */
+    .catalog-filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+
+    .filter-btn {
+      padding: 10px 22px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-subtle);
+      background-color: #FFFFFF;
+      font-family: var(--font-heading);
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink-muted);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .filter-btn:hover {
+      border-color: var(--ink-dark);
+      color: var(--ink-dark);
+    }
+
+    .filter-btn.active {
+      background-color: var(--ink-dark);
+      color: #FFFFFF;
+      border-color: var(--ink-dark);
+      box-shadow: 0 4px 14px rgba(19, 42, 34, 0.18);
+    }
+
+    .services-bento {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .service-item {
+      background-color: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition-smooth);
+      position: relative;
+    }
+
+    .service-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(19, 42, 34, 0.2);
+    }
+
+    .service-thumb {
+      width: 100%;
+      height: 220px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--bg-warm);
+    }
+
+    .service-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .service-item:hover .service-thumb img {
+      transform: scale(1.05);
+    }
+
+    .service-category-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 2;
+    }
+
+    .service-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 12px;
+    }
+
+    .service-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink-dark);
+      line-height: 1.35;
+    }
+
+    .service-description {
+      font-size: 14px;
+      color: var(--ink-muted);
+      line-height: 1.55;
+      margin-bottom: auto;
+    }
+
+    .service-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 18px;
+      border-top: 1px solid rgba(19, 42, 34, 0.06);
+      margin-top: 12px;
+      gap: 12px;
+    }
+
+    .service-price-tag {
+      font-family: var(--font-heading);
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--ink-dark);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .service-book-btn {
+      padding: 8px 18px;
+      font-size: 13px;
+      min-height: 38px;
+    }
+
+    @media (max-width: 1024px) {
+      .services-bento {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 650px) {
+      .services-bento {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ==========================================================================
+       SPECIAL CONTRAST FEATURE (Dark Pine Statement Banner)
+       ========================================================================== */
+    .contrast-statement {
+      background-color: var(--ink-dark);
+      color: #FAF7F2;
+      border-radius: var(--radius-xl);
+      padding: 64px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+      align-items: center;
+      box-shadow: var(--shadow-lg);
+      margin: 40px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contrast-content {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      z-index: 2;
+    }
+
+    .contrast-title {
+      color: #FFFFFF;
+      font-size: clamp(28px, 3.4vw, 42px);
+      line-height: 1.15;
+    }
+
+    .contrast-text {
+      color: rgba(250, 247, 242, 0.85);
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .contrast-points {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .contrast-point-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+      color: #FAF7F2;
+    }
+
+    .check-circle {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background-color: var(--bg-mint);
+      color: var(--ink-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contrast-media {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+      border: 3px solid rgba(255, 255, 255, 0.15);
+      height: 380px;
+    }
+
+    .contrast-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media (max-width: 992px) {
+      .contrast-statement {
+        grid-template-columns: 1fr;
+        padding: 40px 28px;
+        gap: 36px;
+      }
+      .contrast-media {
+        height: 280px;
+      }
+    }
+
+    /* ==========================================================================
+       PRICING TABLES
+       ========================================================================== */
+    .pricing-card {
+      background-color: #FFFFFF;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      padding: 48px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .pricing-tabs {
+      display: flex;
+      gap: 12px;
+      border-bottom: 2px solid rgba(19, 42, 34, 0.06);
+      margin-bottom: 32px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .tab-nav-btn {
+      padding: 12px 20px;
+      background: transparent;
+      border: none;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--ink-muted);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -6px;
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .tab-nav-btn.active {
+      color: var(--ink-dark);
+      border-bottom-color: var(--ink-dark);
+    }
+
+    .price-table-group {
+      display: none;
+    }
+
+    .price-table-group.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    table.custom-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table.custom-table th {
+      text-align: left;
+      font-family: var(--font-heading);
+      font-size: 12.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--ink-muted);
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(19, 42, 34, 0.1);
+    }
+
+    table.custom-table td {
+      padding: 18px;
+      border-bottom: 1px solid rgba(19, 42, 34, 0.05);
+      vertical-align: middle;
+      font-size: 15.5px;
+    }
+
+    table.custom-table tr:hover td {
+      background-color: var(--bg-warm);
+    }
+
+    .td-name strong {
+      display: block;
+      color: var(--ink-dark);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 15.5px;
+    }
+
+    .td-name span {
+      display: block;
+      font-size: 13px;
+      color: var(--ink-muted);
+      margin-top: 3px;
+    }
+
+    .td-price {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 17px;
+      color: var(--ink-dark);
+      text-align: right;
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .td-action {
+      text-align: right;
+      width: 140px;
+    }
+
+    .table-book-btn {
+      padding: 8px 16px;
+      font-size: 12.5px;
+      min-height: 36px;
+    }
+
+    @media (max-width: 768px) {
+      .pricing-card {
+        padding: 24px 16px;
+      }
+      table.custom-table th, table.custom-table td {
+        padding: 12px 10px;
+      }
+      .td-action {
+        width: auto;
+      }
+    }
+
+    /* ==========================================================================
+       DOCTOR & SPECIALIST SECTION
+       ========================================================================== */
+    .specialist-card {
+      background-color: #FFFFFF;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      padding: 56px;
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 56px;
+      align-items: center;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .specialist-photo-frame {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      border: 4px solid var(--bg-warm);
+      position: relative;
+      height: 440px;
+    }
+
+    .specialist-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .specialist-info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .specialist-name {
+      font-size: clamp(26px, 3vw, 36px);
+      color: var(--ink-dark);
+    }
+
+    .specialist-creds {
+      font-family: var(--font-heading);
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--ink-muted);
+    }
+
+    .specialist-bio {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--ink-body);
+    }
+
+    .specialist-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .spec-feature-item {
+      background-color: var(--bg-warm);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .spec-feature-item strong {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 15px;
+      color: var(--ink-dark);
+    }
+
+    .spec-feature-item span {
+      font-size: 13px;
+      color: var(--ink-muted);
+    }
+
+    @media (max-width: 992px) {
+      .specialist-card {
+        grid-template-columns: 1fr;
+        padding: 32px 24px;
+        gap: 36px;
+      }
+      .specialist-photo-frame {
+        height: 360px;
+      }
+      .specialist-features {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ==========================================================================
+       BRANDS & COSMETICS
+       ========================================================================== */
+    .brands-section-card {
+      background-color: #FFFFFF;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      padding: 48px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .brands-banner-img {
+      width: 100%;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 36px;
+    }
+
+    .brands-banner-img img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+    }
+
+    .brands-chips-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .brand-chip-card {
+      background-color: var(--bg-warm);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      border: 1px solid var(--border-subtle);
+      transition: transform var(--transition-fast);
+    }
+
+    .brand-chip-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--ink-dark);
+    }
+
+    .brand-chip-card h4 {
+      font-size: 16px;
+      margin-bottom: 6px;
+      color: var(--ink-dark);
+    }
+
+    .brand-chip-card p {
+      font-size: 13px;
+      color: var(--ink-muted);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .brands-chips-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 500px) {
+      .brands-chips-grid {
+        grid-template-columns: 1fr;
+      }
+      .brands-section-card {
+        padding: 24px 16px;
+      }
+    }
+
+    /* ==========================================================================
+       CERTIFICATES & MEDICAL SAFETY
+       ========================================================================== */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .cert-box {
+      background-color: #FFFFFF;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cert-img-wrap {
+      width: 100%;
+      height: 260px;
+      overflow: hidden;
+      background-color: var(--bg-warm);
+    }
+
+    .cert-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .cert-content {
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .cert-content h3 {
+      font-size: 20px;
+    }
+
+    .cert-content p {
+      font-size: 14.5px;
+      color: var(--ink-muted);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .certs-grid {
+        grid-template-columns: 1fr;
+      }
+      .cert-img-wrap {
+        height: 200px;
+      }
+    }
+
+    /* ==========================================================================
+       TESTIMONIALS (Solus Warm Cards)
+       ========================================================================== */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .review-card {
+      border-radius: var(--radius-lg);
+      padding: 36px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-subtle);
+      transition: transform var(--transition-smooth);
+    }
+
+    .review-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .review-card.peach { background-color: var(--bg-peach); }
+    .review-card.dark {
+      background-color: var(--ink-dark);
+      color: #FFFFFF;
+      border-color: transparent;
+    }
+    .review-card.mint { background-color: var(--bg-mint); }
+
+    .review-text {
+      font-size: 15.5px;
+      line-height: 1.65;
+      font-style: normal;
+    }
+
+    .review-card.dark .review-text {
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .review-author {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background-color: #FFFFFF;
+      color: var(--ink-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .author-details strong {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 14.5px;
+      color: inherit;
+    }
+
+    .author-details span {
+      font-size: 12.5px;
+      color: var(--ink-muted);
+    }
+
+    .review-card.dark .author-details span {
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    @media (max-width: 992px) {
+      .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ==========================================================================
+       FAQ ACCORDION (Solus Style Pill-Rows)
+       ========================================================================== */
+    .faq-container {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .faq-item {
+      background-color: #FFFFFF;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition-fast);
+    }
+
+    .faq-item:hover {
+      border-color: var(--ink-dark);
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 22px 28px;
+      background: none;
+      border: none;
+      text-align: left;
+      font-family: var(--font-heading);
+      font-size: 16.5px;
+      font-weight: 700;
+      color: var(--ink-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: pointer;
+    }
+
+    .faq-toggle-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: var(--bg-warm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform var(--transition-smooth), background-color var(--transition-smooth);
+      color: var(--ink-dark);
+      font-weight: 800;
+      font-size: 18px;
+    }
+
+    .faq-item.active .faq-toggle-icon {
+      transform: rotate(45deg);
+      background-color: var(--ink-dark);
+      color: #FFFFFF;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+      padding: 0 28px;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--ink-muted);
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      padding: 0 28px 24px 28px;
+    }
+
+    @media (max-width: 600px) {
+      .faq-question {
+        padding: 18px 20px;
+        font-size: 15px;
+      }
+      .faq-item.active .faq-answer {
+        padding: 0 20px 20px 20px;
+      }
+    }
+
+    /* ==========================================================================
+       BOOKING & CONTACTS BENTO
+       ========================================================================== */
+    .booking-bento {
+      background-color: #FFFFFF;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+    }
+
+    .booking-contacts-col {
+      background-color: var(--bg-warm);
+      padding: 56px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      border-right: 1px solid var(--border-subtle);
+    }
+
+    .contact-block-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .contact-block-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background-color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink-dark);
+      box-shadow: var(--shadow-sm);
+      flex-shrink: 0;
+    }
+
+    .contact-block-text strong {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 14.5px;
+      color: var(--ink-dark);
+      margin-bottom: 3px;
+    }
+
+    .contact-block-text p, .contact-block-text a {
+      font-size: 15px;
+      color: var(--ink-body);
+      line-height: 1.5;
+    }
+
+    .contact-block-text a:hover {
+      color: var(--ink-dark);
+      text-decoration: underline;
+    }
+
+    .booking-form-col {
+      padding: 56px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-label {
+      font-family: var(--font-heading);
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink-dark);
+    }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      background-color: var(--bg-page);
+      font-size: 15px;
+      color: var(--ink-dark);
+      transition: all var(--transition-fast);
+    }
+
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      outline: none;
+      border-color: var(--ink-dark);
+      background-color: #FFFFFF;
+      box-shadow: 0 0 0 3px rgba(19, 42, 34, 0.08);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-privacy-note {
+      font-size: 12.5px;
+      color: var(--ink-muted);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 992px) {
+      .booking-bento {
+        grid-template-columns: 1fr;
+      }
+      .booking-contacts-col {
+        border-right: none;
+        border-bottom: 1px solid var(--border-subtle);
+        padding: 36px 24px;
+      }
+      .booking-form-col {
+        padding: 36px 24px;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ==========================================================================
+       SITE FOOTER
+       ========================================================================== */
+    .site-footer {
+      background-color: #FFFFFF;
+      border-top: 1px solid var(--border-subtle);
+      padding: 64px 0 36px 0;
+      margin-top: var(--section-spacing);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand-col {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .footer-desc {
+      font-size: 14px;
+      color: var(--ink-muted);
+      line-height: 1.6;
+      max-width: 34ch;
+    }
+
+    .footer-col-title {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink-dark);
+      margin-bottom: 18px;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-link {
+      font-size: 14px;
+      color: var(--ink-muted);
+      transition: color var(--transition-fast);
+    }
+
+    .footer-link:hover {
+      color: var(--ink-dark);
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      padding-top: 28px;
+      border-top: 1px solid rgba(19, 42, 34, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 13px;
+      color: var(--ink-muted);
+    }
+
+    .footer-license-note {
+      font-size: 12px;
+      color: var(--ink-muted);
+      max-width: 60ch;
+    }
+
+    @media (max-width: 900px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media (max-width: 600px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    /* ==========================================================================
+       TOAST / NOTIFICATION
+       ========================================================================== */
+    .toast-banner {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background-color: var(--ink-dark);
+      color: #FFFFFF;
+      padding: 16px 24px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 1000;
+      transform: translateY(120px);
+      opacity: 0;
+      transition: all var(--transition-smooth);
+      pointer-events: none;
+    }
+
+    .toast-banner.show {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Floating CTA for Mobile */
+    .mobile-float-cta {
+      display: none;
+      position: fixed;
+      bottom: 16px;
+      left: 16px;
+      right: 16px;
+      z-index: 90;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    @media (max-width: 768px) {
+      .mobile-float-cta {
+        display: block;
+      }
+      .mobile-float-cta .btn {
+        width: 100%;
+        box-shadow: none;
+      }
+      body {
+        padding-bottom: 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================================
+       HEADER
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="brand" aria-label="Кабинет косметологии Облака">
+        <img src="img/assets/logo-oblaka.png" alt="Логотип Облака" class="brand-logo" width="40" height="40">
+        <div>
+          <span class="brand-title">ОБЛАКА</span>
+          <span class="brand-subtitle">косметологический кабинет</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav aria-label="Основная навигация">
+        <ul class="nav-menu">
+          <li><a href="#services" class="nav-link">Процедуры</a></li>
+          <li><a href="#prices" class="nav-link">Прайс</a></li>
+          <li><a href="#doctor" class="nav-link">О враче</a></li>
+          <li><a href="#cosmetics" class="nav-link">Космецевтика</a></li>
+          <li><a href="#certs" class="nav-link">Лицензия</a></li>
+          <li><a href="#reviews" class="nav-link">Отзывы</a></li>
+          <li><a href="#faq" class="nav-link">Вопросы</a></li>
+          <li><a href="#contacts" class="nav-link">Контакты</a></li>
+        </ul>
+      </nav>
+
+      <!-- Actions -->
+      <div class="header-actions">
+        <a href="tel:+79201526458" class="header-phone">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          +7 (920) 152-64-58
+        </a>
+        <a href="#booking" class="btn btn-primary" style="padding: 10px 22px; min-height: 42px;">Записаться</a>
+        <button class="burger-btn" id="burger-toggle" aria-label="Открыть мобильное меню">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer">
+      <a href="#services" class="nav-link mobile-link">Процедуры</a>
+      <a href="#prices" class="nav-link mobile-link">Прайс-лист</a>
+      <a href="#doctor" class="nav-link mobile-link">О враче-косметологе</a>
+      <a href="#cosmetics" class="nav-link mobile-link">Космецевтика</a>
+      <a href="#certs" class="nav-link mobile-link">Лицензия и стерильность</a>
+      <a href="#reviews" class="nav-link mobile-link">Отзывы пациентов</a>
+      <a href="#faq" class="nav-link mobile-link">Частые вопросы</a>
+      <a href="#contacts" class="nav-link mobile-link">Контакты</a>
+      <a href="tel:+79201526458" class="btn btn-secondary" style="margin-top: 10px;">Позвонить: +7 (920) 152-64-58</a>
+      <a href="#booking" class="btn btn-primary mobile-link">Записаться на приём</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========================================================================
+         HERO SECTION (Wellness Warm Card Layout)
+         ======================================================================== -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-banner">
+          <div class="hero-content">
+            <div class="hero-eyebrow">
+              <span class="badge-pill mint">Медицинская лицензия № ЛО-69-01-002418</span>
+            </div>
+
+            <h1 class="hero-title">
+              Здоровая, сияющая кожа под контролем врача
+            </h1>
+
+            <p class="hero-subtitle">
+              Бережная врачебная и эстетическая косметология в Твери: персонализированные атравматичные уходы, чистки, пилинги и биолифтинг без боли и долгой реабилитации.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#booking" class="btn btn-primary">
+                Записаться на приём
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+              <a href="#services" class="btn btn-secondary">
+                Каталог процедур
+              </a>
+            </div>
+
+            <div class="hero-stats">
+              <div class="stat-item">
+                <span class="stat-val">12+</span>
+                <span class="stat-lbl">лет врачебной практики</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-val">100%</span>
+                <span class="stat-lbl">стерилизация по СанПиН</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-val">0 дней</span>
+                <span class="stat-lbl">период реабилитации</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Media -->
+          <div class="hero-media-wrapper">
+            <div class="hero-image-card">
+              <img src="img/assets/stock/hero.jpg" alt="Процедура ухода за кожей лица в кабинете Облака" width="600" height="480">
+            </div>
+
+            <div class="hero-floating-card">
+              <div class="floating-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              </div>
+              <div class="floating-text">
+                <strong>Медицинский подход</strong>
+                <span>Только сертифицированные протоколы и дерматокосмецевтика</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         FOUR PILLARS / ADVANTAGES
+         ======================================================================== -->
+    <section class="section-wrap" style="padding-top: 0;">
+      <div class="container">
+        <div class="pillars-grid">
+          <!-- Pillar 1 -->
+          <div class="pillar-card peach">
+            <div class="pillar-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </div>
+            <h3 class="pillar-title">Врач-дерматолог</h3>
+            <p class="pillar-desc">Приём ведёт дипломированный врач с высшим медицинским образованием и опытом более 12 лет.</p>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="pillar-card mint">
+            <div class="pillar-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            </div>
+            <h3 class="pillar-title">Абсолютная чистота</h3>
+            <p class="pillar-desc">Многоступенчатая стерилизация инструментария в автоклавах по стандартам СанПиН.</p>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="pillar-card warm">
+            <div class="pillar-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+            </div>
+            <h3 class="pillar-title">Премиум препараты</h3>
+            <p class="pillar-desc">Оригинальная космецевтика Holy Land, Christina, Gigi Laboratories с сертификатами подлинности.</p>
+          </div>
+
+          <!-- Pillar 4 -->
+          <div class="pillar-card dark">
+            <div class="pillar-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            </div>
+            <h3 class="pillar-title">Без синяков и боли</h3>
+            <p class="pillar-desc">Атравматичные бережные методики позволяют вернуться к делам сразу после сеанса.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SERVICES BENTO CATALOG
+         ======================================================================== -->
+    <section class="section-wrap" id="services">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge-pill peach">Услуги и методики</span>
+          <h2 class="section-title">Персонализированные программы ухода</h2>
+          <p class="section-desc">Каждый протокол подбирается индивидуально после осмотра типа, состояния и потребностей вашей кожи.</p>
+        </div>
+
+        <!-- Filter Pills -->
+        <div class="catalog-filters">
+          <button class="filter-btn active" data-filter="all">Все процедуры</button>
+          <button class="filter-btn" data-filter="face">Уход за лицом</button>
+          <button class="filter-btn" data-filter="eyes">Кожа век</button>
+          <button class="filter-btn" data-filter="clean">Чистка лица</button>
+          <button class="filter-btn" data-filter="peel">Пилинги</button>
+          <button class="filter-btn" data-filter="pigment">Пигментация</button>
+        </div>
+
+        <!-- Bento Grid -->
+        <div class="services-bento" id="services-grid">
+
+          <!-- 1: Сухая с куперозом -->
+          <article class="service-item" data-category="face">
+            <div class="service-thumb">
+              <span class="badge-pill peach service-category-badge">Лицо</span>
+              <img src="img/s1.jpg" alt="Уход для сухой кожи с куперозом" loading="lazy">
+            </div>
+            <div class="service-body">
+              <h3 class="service-name">Атравматичный очищающий уход для сухой кожи с куперозом</h3>
+              <p class="service-description">Деликатное очищение и укрепление сосудистой стенки без микротравм, покраснений и нагрева.</p>
+              <div class="service-footer">
+                <span class="service-price-tag">от 2 600 ₽</span>
+                <button class="btn btn-primary service-book-btn" onclick="selectProcedure('Уход для сухой кожи с куперозом')">Записаться</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2: Жирная кожа -->
+          <article class="service-item" data-category="face">
+            <div class="service-thumb">
+              <span class="badge-pill peach service-category-badge">Лицо</span>
+              <img src="img/s2-1.jpg" alt="Очищающий уход для жирной кожи" loading="lazy">
+            </div>
+            <div class="service-body">
+              <h3 class="service-name">Атравматичный очищающий уход для жирной кожи</h3>
+              <p class="service-description">Глубокое очищение протоков сальных желез, себорегуляция и сужение пор без пересушивания эпидермиса.</p>
+              <div class="service-footer">
+                <span class="service-price-tag">от 1 800 ₽</span>
+                <button class="btn btn-primary service-book-btn" onclick="selectProcedure('Уход для жирной кожи')">Записаться</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3: Сухая с розацеа -->
+          <article class="service-item" data-category="face">
+            <div class="service-thumb">
+              <span class="badge-pill peach service-category-badge">Лицо</span>
+              <img src="img/s3-1.jpg" alt="Уход для кожи с розацеа" loading="lazy">
+            </div>
+            <div class="service-body">
+              <h3 class="service-name">Атравматичный уход для сухой кожи с розацеа</h3>
+              <p class="service-description">Специализированная программа снятия воспалительного процесса, снижения реактивности и восстановления барьера.</p>
+              <div class="service-footer">
+                <span class="service-price-tag">от 1 600 ₽</span>
+                <button class="btn btn-primary service-book-btn" onclick="selectProcedure('Уход для сухой кожи с розацеа')">Записаться</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4: Жирная с розацеа -->
+          <article class="service-item" data-category="face">
+            <div class="service-thumb">
+              <span class="badge-pill peach service-category-badge">Лицо</span>
+              <img src="img/s4-1.jpg" alt="Уход для жирной кожи с розацеа" loading="lazy">
+            </div>
+            <div class="service-body">
+              <h3 class="service-name">Атравматичный уход для жирной кожи с розацеа</h3>
+              <p class="service-description">Мягкая нормализация микробиома, регуляция жирности и устранение эритемы по лечебным протоколам.</p>
+              <div class="service-footer">
+                <span class="service-price-tag">от 1 800 ₽</span>
+                <button class="btn btn-primary service-book-btn" onclick="selectProcedure('Уход для жирной кожи с розацеа')">Записаться</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5: Биолифтинг -->
+          <article class="service-item" data-category="face">
+            <div class="service-thumb">
+              <span class="badge-pill peach service-category-badge">Лицо</span>
+              <img src="img/s5-1.jpg" alt="Процедура биолифтинга" loading="lazy">
+            </div>
+            <div class="service-body">
+              <h3 class="service-name">Биолифтинг и ремоделирование овала</h3>
+              <p class="service-description">Интенсивное восстановление тонуса, упругости коллагенового каркаса и лифтинг контуров лица.</p>
+              <div class="service-footer">
+                <span class="service-price-tag">от 2 800 ₽</span>
+                <button class="btn btn-primary service-book-btn" onclick="selectProcedure('Биолифтинг')">Записаться</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 6: Век чувствительный -->
+          <article class="service-item" data-category="eyes">
+            <div class="service-thumb">
+              <span class="badge-pill mint service-category-badge">Кожа век</span>
+              <img src="img/s7-1.jpg" alt="Уход за чувствительной кожей век" loading="lazy">
+            </div>
+            <div class="service-body">
+              <h3 class="service-name">Уход за чувствительной кожей век</h3>
+              <p class="service-description">Увлажнение тонкой периорбитальной зоны, разглаживание мелких мимических морщинок обезвоженности.</p>
+              <div class="service-footer">
+                <span class="service-price-tag">от 600 ₽</span>
+                <button class="btn btn-primary service-book-btn" onclick="selectProcedure('Уход за чувствительной кожей век')">Записаться</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 7: Век жирный -->
+          <article class="service-item" data-category="eyes">
+            <div class="service-thumb">
+              <span class="badge-pill mint service-category-badge">Кожа век</span>
+              <img src="img/s8-1.jpg" alt="Уход за жирной кожей век" loading="lazy">
+            </div>
+            <div class="service-body">
+              <h3 class="service-name">Уход за жирной кожей век и себорегуляция</h3>
+              <p class="service-description">Нормализация состояния кожи век с выраженным блеском, склонностью к милиумам и раздражениям.</p>
+              <div class="service-footer">
+                <span class="service-price-tag">от 800 ₽</span>
+                <button class="btn btn-primary service-book-btn" onclick="selectProcedure('Уход за жирной кожей век')">Записаться</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 8: Век от отеков -->
+          <article class="service-item" data-category="eyes">
+            <div class="service-thumb">
+              <span class="badge-pill mint service-category-badge">Кожа век</span>
+              <img src="img/s10-1.jpg" alt="Дренажный уход за кожей век" loading="lazy">
+            </div>
+            <div class="service-body">
+              <h3 class="service-name">Лимфодренажный уход за кожей век от отёков</h3>
+              <p class="service-description">Активация микроциркуляции, снятие пастозности и утренней припухлости под глазами.</p>
+              <div class="service-footer">
+                <span class="service-price-tag">от 1 200 ₽</span>
+                <button class="btn btn-primary service-book-btn" onclick="selectProcedure('Лимфодренажный уход за веками')">Записаться</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 9: Пигментация -->
+          <article class="service-item" data-category="pigment">
+            <div class="service-thumb">
+              <span class="badge-pill warm service-category-badge">Осветление</span>
+              <img src="img/26.jpg" alt="Отбеливающие программы для кожи с пигментацией" loading="lazy">
+            </div>
+            <div class="service-body">
+              <h3 class="service-name">Отбеливающие медицинские программы</h3>
+              <p class="service-description">Блокировка синтеза избыточного меланина, выравнивание тона при постакне, хлоазме и фотостарении.</p>
+              <div class="service-footer">
+                <span class="service-price-tag">от 2 500 ₽</span>
+                <button class="btn btn-primary service-book-btn" onclick="selectProcedure('Отбеливающие программы')">Записаться</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 10: Чистка лица -->
+          <article class="service-item" data-category="clean">
+            <div class="service-thumb">
+              <span class="badge-pill peach service-category-badge">Чистка</span>
+              <img src="img/sa1.jpg" alt="Мануальная и комбинированная чистка лица" loading="lazy">
+            </div>
+            <div class="service-body">
+              <h3 class="service-name">Мануальная и комбинированная чистка лица</h3>
+              <p class="service-description">Атравматичное размягчение сальных пробок с бережной экстракцией комедонов и поросуживающей маской.</p>
+              <div class="service-footer">
+                <span class="service-price-tag">от 900 ₽</span>
+                <button class="btn btn-primary service-book-btn" onclick="selectProcedure('Чистка лица')">Записаться</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 11: Пилинги для век -->
+          <article class="service-item" data-category="peel">
+            <div class="service-thumb">
+              <span class="badge-pill mint service-category-badge">Пилинг</span>
+              <img src="img/sa2.jpg" alt="Предпилинговый уход и пилинги для век" loading="lazy">
+            </div>
+            <div class="service-body">
+              <h3 class="service-name">Предпилинговый уход и пилинги для области век</h3>
+              <p class="service-description">Специализированные мягкие AHA/BHA кислоты, безопасные для тончайшей периорбитальной зоны.</p>
+              <div class="service-footer">
+                <span class="service-price-tag">от 300 ₽</span>
+                <button class="btn btn-primary service-book-btn" onclick="selectProcedure('Пилинги для области век')">Записаться</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 12: Комплексные пилинги -->
+          <article class="service-item" data-category="peel">
+            <div class="service-thumb">
+              <span class="badge-pill mint service-category-badge">Пилинг</span>
+              <img src="img/sa3.jpg" alt="Всесезонные обновляющие пилинги" loading="lazy">
+            </div>
+            <div class="service-body">
+              <h3 class="service-name">Всесезонные обновляющие пилинги</h3>
+              <p class="service-description">Миндальный, феруловый, молочный и азелаиновый пилинги без шелушения и фотосенсибилизации.</p>
+              <div class="service-footer">
+                <span class="service-price-tag">от 1 800 ₽</span>
+                <button class="btn btn-primary service-book-btn" onclick="selectProcedure('Всесезонные пилинги')">Записаться</button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CONTRAST STATEMENT BANNER (Solus Dark Forest Green Element)
+         ======================================================================== -->
+    <section class="section-wrap" style="padding-top: 0; padding-bottom: 0;">
+      <div class="container">
+        <div class="contrast-statement">
+          <div class="contrast-content">
+            <span class="badge-pill light">Клинический стандарт</span>
+            <h2 class="contrast-title">Диагностика кожи перед каждой процедурой</h2>
+            <p class="contrast-text">
+              Мы не навязываем шаблонные услуги. В кабинете «Облака» план терапии составляется строго на основе дерматоскопического анализа текущего состояния эпидермиса, сосудистой сетки и уровня увлажненности.
+            </p>
+
+            <ul class="contrast-points">
+              <li class="contrast-point-item">
+                <div class="check-circle">✓</div>
+                <span>Бесплатная первичная консультация при проведении процедуры</span>
+              </li>
+              <li class="contrast-point-item">
+                <div class="check-circle">✓</div>
+                <span>Грамотный подбор домашней аптечной космецевтики без лишних трат</span>
+              </li>
+              <li class="contrast-point-item">
+                <div class="check-circle">✓</div>
+                <span>Протоколы ведения сложных состояний: розацеа, купероз, акне, гиперкератоз</span>
+              </li>
+            </ul>
+
+            <div style="margin-top: 8px;">
+              <a href="#booking" class="btn btn-light">Записаться на диагностику</a>
+            </div>
+          </div>
+
+          <div class="contrast-media">
+            <img src="img/assets/stock/cabinet.jpg" alt="Кабинет косметологии Облака Тверь" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         PRICING TABLE (Clean Tabbed Structure)
+         ======================================================================== -->
+    <section class="section-wrap" id="prices">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge-pill warm">Прайс-лист</span>
+          <h2 class="section-title">Честная стоимость без скрытых доплат</h2>
+          <p class="section-desc">В цену всех процедур включены профессиональные расходные материалы, ампульные сыворотки и успокаивающие маски.</p>
+        </div>
+
+        <div class="pricing-card">
+          <!-- Price Tabs -->
+          <div class="pricing-tabs">
+            <button class="tab-nav-btn active" data-tab="tab-face">Уход за лицом</button>
+            <button class="tab-nav-btn" data-tab="tab-eyes">Зона вокруг глаз</button>
+            <button class="tab-nav-btn" data-tab="tab-clean">Чистки и пилинги</button>
+            <button class="tab-nav-btn" data-tab="tab-complex">Комплексные программы</button>
+          </div>
+
+          <!-- Group 1: Лицо -->
+          <div class="price-table-group active" id="tab-face">
+            <table class="custom-table" aria-label="Цены на уход за лицом">
+              <thead>
+                <tr>
+                  <th>Процедура</th>
+                  <th style="text-align: right;">Стоимость</th>
+                  <th style="text-align: right;">Запись</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="td-name">
+                    <strong>Атравматичный очищающий уход для сухой, атоничной кожи с куперозом</strong>
+                    <span>Мягкий деликатный уход с сосудоукрепляющими концентратами</span>
+                  </td>
+                  <td class="td-price">от 2 600 ₽</td>
+                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Уход для сухой кожи с куперозом')">Выбрать</button></td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Атравматичный очищающий уход для жирной кожи</strong>
+                    <span>Растворение комедонов, себорегуляция и сужение пор</span>
+                  </td>
+                  <td class="td-price">от 1 800 ₽</td>
+                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Уход для жирной кожи')">Выбрать</button></td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Атравматичный очищающий уход для сухой кожи с розацеа</strong>
+                    <span>Снятие красноты, терапия гиперчувствительности</span>
+                  </td>
+                  <td class="td-price">от 1 600 ₽</td>
+                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Уход для сухой кожи с розацеа')">Выбрать</button></td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Атравматичный очищающий уход для жирной кожи с розацеа</strong>
+                    <span>Балансирующий уход при повышенной чувствительности</span>
+                  </td>
+                  <td class="td-price">от 1 800 ₽</td>
+                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Уход для жирной кожи с розацеа')">Выбрать</button></td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Биолифтинг и моделирование контура лица</strong>
+                    <span>Антивозрастная реструктурирующая терапия</span>
+                  </td>
+                  <td class="td-price">от 2 800 ₽</td>
+                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Биолифтинг лица')">Выбрать</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Group 2: Век -->
+          <div class="price-table-group" id="tab-eyes">
+            <table class="custom-table" aria-label="Цены на уход за кожей век">
+              <thead>
+                <tr>
+                  <th>Процедура</th>
+                  <th style="text-align: right;">Стоимость</th>
+                  <th style="text-align: right;">Запись</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="td-name">
+                    <strong>Уход за чувствительной кожей век</strong>
+                    <span>Снятие сухости, укрепление тонкой кожи вокруг глаз</span>
+                  </td>
+                  <td class="td-price">от 600 ₽</td>
+                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Уход за чувствительной кожей век')">Выбрать</button></td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Уход за жирной кожей век</strong>
+                    <span>Бережное очищение пор и себорегуляция</span>
+                  </td>
+                  <td class="td-price">от 800 ₽</td>
+                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Уход за жирной кожей век')">Выбрать</button></td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Уход за кожей век, склонной к отекам</strong>
+                    <span>Дренажный микромассаж и лимфодренажные патч-маски</span>
+                  </td>
+                  <td class="td-price">от 1 200 ₽</td>
+                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Уход за веками от отеков')">Выбрать</button></td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Пилинги периорбитальной зоны</strong>
+                    <span>Специальный ультрамягкий состав против гусиных лапок</span>
+                  </td>
+                  <td class="td-price">от 800 ₽</td>
+                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Пилинги периорбитальной зоны')">Выбрать</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Group 3: Чистки и пилинги -->
+          <div class="price-table-group" id="tab-clean">
+            <table class="custom-table" aria-label="Цены на чистки и пилинги">
+              <thead>
+                <tr>
+                  <th>Процедура</th>
+                  <th style="text-align: right;">Стоимость</th>
+                  <th style="text-align: right;">Запись</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="td-name">
+                    <strong>Мануальная чистка: Т-зона</strong>
+                    <span>Локальная проработка носа, подбородка и лба</span>
+                  </td>
+                  <td class="td-price">от 900 ₽</td>
+                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Мануальная чистка: Т-зона')">Выбрать</button></td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Комплексная чистка лица (лицо + шея)</strong>
+                    <span>Двухэтапная ультразвуковая + механическая чистка с сывороткой</span>
+                  </td>
+                  <td class="td-price">от 1 500 ₽</td>
+                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Чистка лица и шеи')">Выбрать</button></td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Чистка спины</strong>
+                    <span>Терапевтическое очищение при воспалениях</span>
+                  </td>
+                  <td class="td-price">от 1 200 ₽</td>
+                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Чистка спины')">Выбрать</button></td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Всесезонные поверхностные пилинги</strong>
+                    <span>Миндальный, феруловый, молочный, азелаиновый</span>
+                  </td>
+                  <td class="td-price">от 1 800 ₽</td>
+                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Всесезонный пилинг')">Выбрать</button></td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Отбеливающая депигментирующая программа</strong>
+                    <span>Осветление гиперпигментации, коррекция постакне пятен</span>
+                  </td>
+                  <td class="td-price">от 2 500 ₽</td>
+                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Отбеливающая программа')">Выбрать</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Group 4: Комплексные -->
+          <div class="price-table-group" id="tab-complex">
+            <table class="custom-table" aria-label="Цены на комплексные программы">
+              <thead>
+                <tr>
+                  <th>Процедура</th>
+                  <th style="text-align: right;">Стоимость</th>
+                  <th style="text-align: right;">Запись</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="td-name">
+                    <strong>Программа «Сияние невесты» (экспресс-выход)</strong>
+                    <span>Чистка + лифтинг-массаж + альгинатная маска перед мероприятием</span>
+                  </td>
+                  <td class="td-price">3 500 ₽</td>
+                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Программа Экспресс-выход')">Выбрать</button></td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Курс восстановления кожного барьера (3 сеанса)</strong>
+                    <span>Комплексная терапия розацеа и дегидратации</span>
+                  </td>
+                  <td class="td-price">6 900 ₽</td>
+                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Курс восстановления 3 сеанса')">Выбрать</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         DOCTOR & SPECIALIST SECTION
+         ======================================================================== -->
+    <section class="section-wrap" id="doctor" style="padding-top: 0;">
+      <div class="container">
+        <div class="specialist-card">
+          <div class="specialist-photo-frame">
+            <img src="img/assets/photo-specialist.jpg" alt="Врач-косметолог кабинета Облака" loading="lazy">
+          </div>
+
+          <div class="specialist-info">
+            <span class="badge-pill mint">Ведущий специалист</span>
+            <h2 class="specialist-name">Врачебная эстетика с заботой о вас</h2>
+            <p class="specialist-creds">Врач-дерматовенеролог, косметолог · Стаж клинической практики более 12 лет</p>
+            
+            <p class="specialist-bio">
+              «Моя главная профессиональная цель — сохранять естественную красоту и молодость кожи без агрессивных травмирующих методик. Каждая процедура в кабинете строится на медицинском понимании анатомии и биохимии кожи. Мы не создаем эффект "надутого лица", мы восстанавливаем здоровые физиологические функции эпидермиса».
+            </p>
+
+            <div class="specialist-features">
+              <div class="spec-feature-item">
+                <strong>Высшее медицинское</strong>
+                <span>Регулярные сертификационные циклы и конгрессы</span>
+              </div>
+              <div class="spec-feature-item">
+                <strong>Индивидуальный протокол</strong>
+                <span>Учитываем аллергии, образ жизни и сопутствующие факторы</span>
+              </div>
+            </div>
+
+            <div style="margin-top: 8px;">
+              <a href="#booking" class="btn btn-primary">Записаться на консультацию к врачу</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         BRANDS & COSMETICS
+         ======================================================================== -->
+    <section class="section-wrap" id="cosmetics" style="padding-top: 0;">
+      <div class="container">
+        <div class="brands-section-card">
+          <div class="section-header text-left" style="margin-bottom: 28px;">
+            <span class="badge-pill warm">Дерматокосмецевтика</span>
+            <h2 class="section-title">Работаем исключительно на оригинальных препаратах</h2>
+            <p class="section-desc">В кабинете «Облака» используются мировые бренды с подтвержденной клинической базой и сертификацией Минздрава.</p>
+          </div>
+
+          <div class="brands-banner-img">
+            <img src="img/assets/brands-strip.jpg" alt="Бренды косметики Holy Land, Christina, Gigi" loading="lazy">
+          </div>
+
+          <div class="brands-chips-grid">
+            <div class="brand-chip-card">
+              <h4>Holy Land (Израиль)</h4>
+              <p>Легендарные протоколы атравматичной чистки и ухода за проблемной кожей A-NOX и DOUBLE ACTION.</p>
+            </div>
+            <div class="brand-chip-card">
+              <h4>Christina (Израиль)</h4>
+              <p>Линии Comodex, Unstress и BioPhyto для моментального успокоения и восстановления куперозной кожи.</p>
+            </div>
+            <div class="brand-chip-card">
+              <h4>Gigi Laboratories</h4>
+              <p>Медицинская космецевтика высокой концентрации активных пептидов и фруктовых кислот.</p>
+            </div>
+            <div class="brand-chip-card">
+              <h4>Sesderma (Испания)</h4>
+              <p>Липосомированные пилинги и сыворотки с максимальной биодоступностью без раздражения.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CERTIFICATES & MEDICAL SAFETY
+         ======================================================================== -->
+    <section class="section-wrap" id="certs" style="padding-top: 0;">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge-pill mint">Медицинская безопасность</span>
+          <h2 class="section-title">Сертифицированное оснащение кабинета</h2>
+          <p class="section-desc">Ваша безопасность — наш строгий приоритет: стерильность, контроль сроков годности и официальная лицензия.</p>
+        </div>
+
+        <div class="certs-grid">
+          <div class="cert-box">
+            <div class="cert-img-wrap">
+              <img src="img/assets/cert-banner.jpg" alt="Медицинская лицензия кабинета Облака" loading="lazy">
+            </div>
+            <div class="cert-content">
+              <h3>Лицензия на медицинскую деятельность</h3>
+              <p>Кабинет соответствует всем санитарно-эпидемиологическим нормам Роспотребнадзора. Все инвазивные и аппаратные вмешательства легитимны и безопасны.</p>
+            </div>
+          </div>
+
+          <div class="cert-box">
+            <div class="cert-img-wrap">
+              <img src="img/assets/stock/skincare.jpg" alt="Стерильные препараты и сыворотки" loading="lazy">
+            </div>
+            <div class="cert-content">
+              <h3>Хранение и контроль препаратов</h3>
+              <p>Космецевтика и стерильные сыворотки хранятся в строгом температурном режиме. Вскрытие одноразовых упаковок производится строго в присутствии пациента.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         REVIEWS (Solus Style Contrasting Cards)
+         ======================================================================== -->
+    <section class="section-wrap" id="reviews" style="padding-top: 0;">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge-pill peach">Истории преображения</span>
+          <h2 class="section-title">Что говорят наши пациенты</h2>
+          <p class="section-desc">Более 1 200 довольных пациентов доверяют свою кожу специалистам кабинета «Облака».</p>
+        </div>
+
+        <div class="reviews-grid">
+          <!-- Review 1 (Peach) -->
+          <div class="review-card peach">
+            <p class="review-text">
+              «У меня очень тонкая кожа с куперозом на щеках. В других салонах после чистки я неделю ходила красная. В «Облаках» доктор подобрала атравматичный протокол — лицо чистое, сияет, и ни одного пятнышка! Теперь только сюда».
+            </p>
+            <div class="review-author">
+              <div class="author-avatar">ЕВ</div>
+              <div class="author-details">
+                <strong>Елена Васильева</strong>
+                <span>Атравматичный уход при куперозе</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 2 (Dark Pine Contrast) -->
+          <div class="review-card dark">
+            <p class="review-text">
+              «Пришла с обострением розацеа и сильным чувством стянутости. Мне не стали продавать двадцать баночек, а составили понятную программу из 3 процедур и скорректировали умывание. Кожа успокоилась уже после первого сеанса».
+            </p>
+            <div class="review-author">
+              <div class="author-avatar" style="background-color: var(--bg-peach);">МА</div>
+              <div class="author-details">
+                <strong style="color: #FFFFFF;">Мария Анохина</strong>
+                <span>Курс терапии розацеа</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 3 (Mint) -->
+          <div class="review-card mint">
+            <p class="review-text">
+              «Отличный кабинет! Очень чисто, уютно, играет спокойная музыка. Процедура биолифтинга очень приятная, а эффект виден сразу — овал подтянулся, морщинки у глаз сгладились. Чувствуется рука настоящего врача».
+            </p>
+            <div class="review-author">
+              <div class="author-avatar">ОС</div>
+              <div class="author-details">
+                <strong>Ольга Смирнова</strong>
+                <span>Биолифтинг и уход за веками</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         FAQ (Interactive Accordion Solus Style)
+         ======================================================================== -->
+    <section class="section-wrap" id="faq" style="padding-top: 0;">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge-pill warm">Ответы на вопросы</span>
+          <h2 class="section-title">Часто задаваемые вопросы</h2>
+          <p class="section-desc">Всё, что важно знать перед посещением косметологического кабинета.</p>
+        </div>
+
+        <div class="faq-container">
+          <!-- Q1 -->
+          <div class="faq-item active">
+            <button class="faq-question">
+              <span>Будут ли синяки или шелушение после процедур?</span>
+              <span class="faq-toggle-icon">−</span>
+            </button>
+            <div class="faq-answer">
+              Большинство наших уходов и всесезонных пилингов являются атравматичными. Вы можете сразу вернуться к привычной жизни, наносить макияж уже на следующий день и посещать важные встречи без периода заживления.
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Как подготовиться к первому визиту?</span>
+              <span class="faq-toggle-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              Особой подготовки не требуется. Рекомендуется не проводить агрессивные скрабы и домашние пилинги за 3–4 дня до приёма. Если вы принимаете ретиноиды или антибиотики, сообщите об этом врачу.
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Как подобрать подходящую процедуру, если я не знаю, что нужно коже?</span>
+              <span class="faq-toggle-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              Запишитесь на первичный приём. Доктор проведет визуальный осмотр, оценит тип кожи, уровень гидратации и барьерную функцию, после чего предложит оптимальный протокол именно под ваши цели.
+            </div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Можно ли делать чистку и пилинги в летний период?</span>
+              <span class="faq-toggle-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              Да! Мы применяем специальные всесезонные пилинги (миндальный, феруловый), не вызывающие фотосенсибилизацию, а также атравматичную деликатную чистку, разрешенную круглый год при использовании SPF-защиты.
+            </div>
+          </div>
+
+          <!-- Q5 -->
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Какие способы оплаты вы принимаете?</span>
+              <span class="faq-toggle-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              Мы принимаем банковские карты, оплату по СБП (QR-код), наличные, а также предоставляем фискальный чек для возможности оформления социального налогового вычета за медицинские услуги.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         BOOKING & CONTACTS BENTO
+         ======================================================================== -->
+    <section class="section-wrap" id="contacts" style="padding-top: 0;">
+      <div class="container">
+        <div class="section-header" id="booking">
+          <span class="badge-pill peach">Запись на приём</span>
+          <h2 class="section-title">Онлайн-запись и контакты кабинета</h2>
+          <p class="section-desc">Оставьте заявку, и мы свяжемся с вами в течение 15 минут для подтверждения удобного времени визита.</p>
+        </div>
+
+        <div class="booking-bento">
+          <!-- Col 1: Contacts & Hours -->
+          <div class="booking-contacts-col">
+            <div>
+              <span class="badge-pill mint" style="margin-bottom: 14px;">Мы рядом</span>
+              <h3 style="font-size: 24px; margin-bottom: 8px;">Косметологический кабинет «Облака»</h3>
+              <p style="font-size: 15px; color: var(--ink-muted);">Уютный лицензированный кабинет с приятной атмосферой и парковкой.</p>
+            </div>
+
+            <div class="contact-block-item">
+              <div class="contact-block-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+              <div class="contact-block-text">
+                <strong>Адрес кабинета</strong>
+                <p>г. Тверь, ул. Лидии Базановой, д. 20</p>
+                <span style="font-size: 12.5px; color: var(--ink-muted);">Вход с торца здания, вывеска «Облака»</span>
+              </div>
+            </div>
+
+            <div class="contact-block-item">
+              <div class="contact-block-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+              <div class="contact-block-text">
+                <strong>Телефон для записи</strong>
+                <p><a href="tel:+79201526458">+7 (920) 152-64-58</a></p>
+                <span style="font-size: 12.5px; color: var(--ink-muted);">Звонки, WhatsApp, Telegram</span>
+              </div>
+            </div>
+
+            <div class="contact-block-item">
+              <div class="contact-block-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <div class="contact-block-text">
+                <strong>Режим работы</strong>
+                <p>Пн – Сб: 09:00 – 20:00</p>
+                <p>Вс: по предварительной записи</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Col 2: Interactive Form -->
+          <div class="booking-form-col">
+            <h3 style="font-size: 22px; color: var(--ink-dark);">Записаться на удобное время</h3>
+            <p style="font-size: 14.5px; color: var(--ink-muted);">Заполните форму, и мы подтвердим бронь в мессенджере или по звонку.</p>
+
+            <form id="appointment-form" onsubmit="handleFormSubmit(event)">
+              <div class="form-group">
+                <label for="client-name" class="form-label">Ваше имя *</label>
+                <input type="text" id="client-name" class="form-input" placeholder="Елена" required>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="client-phone" class="form-label">Номер телефона *</label>
+                  <input type="tel" id="client-phone" class="form-input" placeholder="+7 (___) ___-__-__" required>
+                </div>
+                <div class="form-group">
+                  <label for="client-date" class="form-label">Желаемая дата</label>
+                  <input type="date" id="client-date" class="form-input">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="client-procedure" class="form-label">Интересующая процедура</label>
+                <select id="client-procedure" class="form-select">
+                  <option value="">-- Выберите процедуру или консультацию --</option>
+                  <option value="Первичная диагностика и консультация">Первичная диагностика и консультация</option>
+                  <option value="Атравматичный уход для сухой кожи с куперозом">Атравматичный уход для сухой кожи с куперозом</option>
+                  <option value="Атравматичный уход для жирной кожи">Атравматичный уход для жирной кожи</option>
+                  <option value="Атравматичный уход при розацеа">Атравматичный уход при розацеа</option>
+                  <option value="Биолифтинг лица">Биолифтинг лица</option>
+                  <option value="Уход за чувствительной кожей век">Уход за чувствительной кожей век</option>
+                  <option value="Дренажный уход за веками от отёков">Дренажный уход за веками от отёков</option>
+                  <option value="Мануальная и ультразвуковая чистка">Мануальная и ультразвуковая чистка</option>
+                  <option value="Всесезонный пилинг">Всесезонный пилинг</option>
+                  <option value="Отбеливающая программа">Отбеливающая программа</option>
+                  <option value="Другая процедура">Другая процедура (уточнить по телефону)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="client-comment" class="form-label">Комментарий или пожелания</label>
+                <textarea id="client-comment" class="form-textarea" rows="3" placeholder="Например: есть аллергия на цитрусовые, удобнее прийти после 18:00..."></textarea>
+              </div>
+
+              <p class="form-privacy-note">
+                Нажимая на кнопку, вы даете согласие на обработку персональных данных в соответствии с политикой конфиденциальности.
+              </p>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 8px;">
+                Отправить заявку на запись
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <div class="brand">
+            <img src="img/assets/logo-oblaka.png" alt="Облака" class="brand-logo" width="36" height="36">
+            <span class="brand-title">ОБЛАКА</span>
+          </div>
+          <p class="footer-desc">
+            Лицензированный кабинет эстетической и врачебной косметологии в Твери. Здоровье, молодость и естественная красота вашей кожи.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Процедуры</h4>
+          <ul class="footer-links">
+            <li><a href="#services" class="footer-link">Атравматичные уходы</a></li>
+            <li><a href="#services" class="footer-link">Терапия розацеа и купероза</a></li>
+            <li><a href="#services" class="footer-link">Биолифтинг</a></li>
+            <li><a href="#services" class="footer-link">Уход за кожей век</a></li>
+            <li><a href="#services" class="footer-link">Всесезонные пилинги</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Пациентам</h4>
+          <ul class="footer-links">
+            <li><a href="#prices" class="footer-link">Прайс-лист</a></li>
+            <li><a href="#doctor" class="footer-link">О враче</a></li>
+            <li><a href="#certs" class="footer-link">Лицензия и нормы</a></li>
+            <li><a href="#faq" class="footer-link">Вопросы и ответы</a></li>
+            <li><a href="#reviews" class="footer-link">Отзывы</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Контакты</h4>
+          <ul class="footer-links">
+            <li><a href="tel:+79201526458" class="footer-link" style="font-weight: 700; color: var(--ink-dark);">+7 (920) 152-64-58</a></li>
+            <li><span class="footer-link">г. Тверь, ул. Л. Базановой, 20</span></li>
+            <li><span class="footer-link">Пн–Сб: 09:00 – 20:00</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Косметологический кабинет «Облака». Все права защищены.</div>
+        <div class="footer-license-note">
+          Медицинская лицензия № ЛО-69-01-002418. Имеются противопоказания, необходима консультация специалиста.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="toast-banner" id="toast-banner" role="alert" aria-live="polite">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--bg-mint);"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <span id="toast-message">Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.</span>
+  </div>
+
+  <!-- Mobile Floating CTA -->
+  <div class="mobile-float-cta">
+    <a href="#booking" class="btn btn-primary">
+      Записаться на приём
+    </a>
+  </div>
+
+  <!-- ========================================================================
+       SCRIPTS: Interactions, Filters, Tabs, FAQ, Booking
+       ======================================================================== -->
+  <script>
+    // 1. Mobile Drawer Toggle
+    const burgerToggle = document.getElementById('burger-toggle');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    if (burgerToggle && mobileDrawer) {
+      burgerToggle.addEventListener('click', () => {
+        mobileDrawer.classList.toggle('open');
+      });
+
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileDrawer.classList.remove('open');
+        });
+      });
+    }
+
+    // 2. Service Bento Filtering
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const serviceItems = document.querySelectorAll('.service-item');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        serviceItems.forEach(item => {
+          if (filter === 'all' || item.getAttribute('data-category') === filter) {
+            item.style.display = 'flex';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // 3. Pricing Tabs
+    const tabButtons = document.querySelectorAll('.tab-nav-btn');
+    const tabPanels = document.querySelectorAll('.price-table-group');
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabButtons.forEach(b => b.classList.remove('active'));
+        tabPanels.forEach(p => p.classList.remove('active'));
+
+        btn.classList.add('active');
+        const targetId = btn.getAttribute('data-tab');
+        const targetPanel = document.getElementById(targetId);
+        if (targetPanel) {
+          targetPanel.classList.add('active');
+        }
+      });
+    });
+
+    // 4. FAQ Accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      question.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        
+        // Close all others
+        faqItems.forEach(other => {
+          other.classList.remove('active');
+          const toggle = other.querySelector('.faq-toggle-icon');
+          if (toggle) toggle.textContent = '+';
+        });
+
+        // Toggle current
+        if (!isActive) {
+          item.classList.add('active');
+          const toggle = item.querySelector('.faq-toggle-icon');
+          if (toggle) toggle.textContent = '−';
+        }
+      });
+    });
+
+    // 5. Select Procedure into Form
+    function selectProcedure(procedureName) {
+      const selectElem = document.getElementById('client-procedure');
+      if (selectElem) {
+        let found = false;
+        for (let i = 0; i < selectElem.options.length; i++) {
+          if (selectElem.options[i].text.toLowerCase().includes(procedureName.toLowerCase()) || 
+              procedureName.toLowerCase().includes(selectElem.options[i].text.toLowerCase())) {
+            selectElem.selectedIndex = i;
+            found = true;
+            break;
+          }
+        }
+        if (!found) {
+          // Add custom option or select first matching
+          selectElem.value = procedureName;
+        }
+      }
+
+      // Smooth scroll to booking
+      const bookingSec = document.getElementById('booking');
+      if (bookingSec) {
+        bookingSec.scrollIntoView({ behavior: 'smooth' });
+      }
+
+      showToast(`Выбрана процедура: ${procedureName}. Укажите ваши контакты для записи.`);
+    }
+
+    // 6. Form Submission & Toast
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('client-name').value;
+      const phone = document.getElementById('client-phone').value;
+      const procedure = document.getElementById('client-procedure').value || 'Консультация';
+
+      showToast(`Спасибо, ${name}! Заявка на «${procedure}» принята. Мы свяжемся с вами по номеру ${phone}.`);
+      document.getElementById('appointment-form').reset();
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast-banner');
+      const msgElem = document.getElementById('toast-message');
+      if (toast && msgElem) {
+        msgElem.textContent = message;
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 5000);
+      }
+    }
+  </script>
+</body>
+</html>
