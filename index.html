@@ -384,43 +384,78 @@
 
     .burger-btn {
       display: none;
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
       border-radius: var(--radius-sm);
       border: 1px solid var(--border-subtle);
       background-color: #FFFFFF;
       cursor: pointer;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 5px;
+      padding: 0;
       color: var(--ink-dark);
       flex-shrink: 0;
-      transition: background-color var(--transition-fast);
+      transition: all var(--transition-fast);
+      z-index: 101;
     }
 
     .burger-btn:hover {
       background-color: var(--bg-warm);
     }
 
-    /* Mobile Drawer */
+    .burger-bar {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background-color: var(--ink-dark);
+      border-radius: 2px;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+      transform-origin: center;
+    }
+
+    .burger-btn.active .burger-bar:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .burger-btn.active .burger-bar:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    .burger-btn.active .burger-bar:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Mobile Drawer with Backdrop Blur and Smooth Transition */
     .mobile-drawer {
-      display: none;
       position: fixed;
       top: 72px;
       left: 0;
       width: 100%;
-      background-color: var(--bg-page);
+      background: rgba(250, 247, 242, 0.98);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-subtle);
-      box-shadow: var(--shadow-md);
-      padding: 24px;
+      box-shadow: 0 16px 36px rgba(19, 42, 34, 0.12);
+      padding: 24px 24px 32px 24px;
       z-index: 99;
       flex-direction: column;
-      gap: 16px;
+      gap: 12px;
       max-height: calc(100vh - 72px);
       overflow-y: auto;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-12px);
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
+      display: flex;
     }
 
     .mobile-drawer.open {
-      display: flex;
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
     }
 
     .mobile-drawer .nav-link {
@@ -1653,23 +1688,26 @@
       margin-top: 2px;
     }
 
-    /* Footer Social Messenger Bar */
+    /* Footer Social Messenger Bar - Clean Card Design */
     .footer-social-bar {
-      margin-top: 36px;
-      padding-top: 28px;
-      border-top: 1px solid rgba(19, 42, 34, 0.08);
+      margin-top: 40px;
+      padding: 24px 32px;
+      background: var(--bg-warm);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(19, 42, 34, 0.06);
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 20px;
       flex-wrap: wrap;
-      gap: 16px;
     }
 
     .footer-social-title {
       font-family: var(--font-heading);
-      font-weight: 600;
-      font-size: 15px;
+      font-weight: 700;
+      font-size: 16px;
       color: var(--ink-dark);
+      letter-spacing: -0.01em;
     }
 
     .footer-social-list {
@@ -1683,12 +1721,12 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 18px;
-      background-color: #ffffff;
-      border: 1px solid rgba(19, 42, 34, 0.12);
+      padding: 11px 22px;
+      background-color: #FFFFFF;
+      border: 1px solid rgba(19, 42, 34, 0.1);
       border-radius: 999px;
-      font-size: 14px;
-      font-weight: 500;
+      font-size: 14.5px;
+      font-weight: 600;
       color: var(--ink-dark);
       text-decoration: none;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1697,10 +1735,10 @@
 
     .footer-social-pill:hover {
       background-color: var(--pine-green);
-      color: #ffffff;
+      color: #FFFFFF;
       border-color: var(--pine-green);
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(19, 42, 34, 0.15);
+      box-shadow: 0 6px 18px rgba(19, 42, 34, 0.16);
     }
 
     .footer-social-pill svg {
@@ -1717,6 +1755,252 @@
         opacity: 1 !important;
         transform: none !important;
         transition: none !important;
+      }
+    }
+
+
+    /* ==========================================================================
+       COMPREHENSIVE MOBILE RESPONSIVE ENGINE (320px - 768px)
+       ========================================================================== */
+    @media (max-width: 900px) {
+      /* 1. Hero Mobile: Badge -> Title -> Photo card (with floating quote) -> Subtitle -> Action */
+      .hero-banner {
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 28px 18px !important;
+        gap: 16px !important;
+        border-radius: var(--radius-lg) !important;
+      }
+      .hero-content {
+        display: contents !important;
+      }
+      .hero-eyebrow {
+        order: 1 !important;
+      }
+      .hero-title {
+        order: 2 !important;
+        font-size: clamp(34px, 8.5vw, 42px) !important;
+        line-height: 1.15 !important;
+        letter-spacing: -0.025em !important;
+        margin-bottom: 2px !important;
+      }
+      .hero-media-wrapper {
+        order: 3 !important;
+        width: 100% !important;
+        margin: 6px 0 16px 0 !important;
+      }
+      .hero-image-card {
+        height: 250px !important;
+        border-radius: var(--radius-md) !important;
+        overflow: hidden !important;
+      }
+      .hero-floating-card {
+        position: relative !important;
+        bottom: auto !important;
+        left: auto !important;
+        right: auto !important;
+        margin-top: -30px !important;
+        margin-left: 10px !important;
+        margin-right: 10px !important;
+        max-width: calc(100% - 20px) !important;
+        padding: 14px 16px !important;
+        background: rgba(255, 255, 255, 0.96) !important;
+        backdrop-filter: blur(12px) !important;
+        box-shadow: 0 10px 24px rgba(19, 42, 34, 0.1) !important;
+        border-radius: var(--radius-md) !important;
+      }
+      .hero-subtitle {
+        order: 4 !important;
+        font-size: 15.5px !important;
+        line-height: 1.6 !important;
+        color: var(--ink-body) !important;
+      }
+      .hero-actions {
+        order: 5 !important;
+        margin-top: 6px !important;
+      }
+      .hero-actions .btn {
+        width: 100% !important;
+        max-width: none !important;
+        justify-content: center !important;
+      }
+      .hero-stats {
+        order: 6 !important;
+        margin-top: 16px !important;
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 8px !important;
+        padding-top: 18px !important;
+        border-top: 1px solid rgba(19, 42, 34, 0.08) !important;
+      }
+      .hero-stats .stat-val {
+        font-size: 22px !important;
+      }
+      .hero-stats .stat-lbl {
+        font-size: 11px !important;
+      }
+
+      /* 2. Gift Certificates Mobile: Atmospheric Background photo with dark gradient overlay */
+      .contrast-statement {
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 36px 20px !important;
+        border-radius: var(--radius-lg) !important;
+        position: relative !important;
+        overflow: hidden !important;
+        background: linear-gradient(135deg, rgba(19, 42, 34, 0.94) 0%, rgba(26, 57, 47, 0.88) 100%),
+                    url('img/s10-1.jpg') center center / cover no-repeat !important;
+        box-shadow: 0 12px 32px rgba(19, 42, 34, 0.2) !important;
+      }
+      .contrast-media {
+        display: none !important;
+      }
+      .contrast-content {
+        position: relative !important;
+        z-index: 2 !important;
+      }
+      .contrast-title {
+        font-size: clamp(28px, 7vw, 34px) !important;
+        line-height: 1.2 !important;
+        margin: 12px 0 14px 0 !important;
+      }
+      .contrast-text {
+        font-size: 15px !important;
+        line-height: 1.6 !important;
+        opacity: 0.96 !important;
+        margin-bottom: 20px !important;
+      }
+      .cert-denominations {
+        margin-bottom: 20px !important;
+        gap: 6px !important;
+      }
+      .cert-denominations .badge-pill {
+        font-size: 12.5px !important;
+        padding: 6px 14px !important;
+      }
+      .contrast-points {
+        margin: 20px 0 !important;
+        gap: 12px !important;
+      }
+      .contrast-point-item {
+        font-size: 14px !important;
+        line-height: 1.45 !important;
+      }
+      .contrast-statement .btn {
+        width: 100% !important;
+        justify-content: center !important;
+        padding: 15px 24px !important;
+      }
+    }
+
+    @media (max-width: 680px) {
+      /* 3. Larger, Confident Section Titles on Mobile */
+      .section-title {
+        font-size: clamp(28px, 7vw, 34px) !important;
+        line-height: 1.2 !important;
+        letter-spacing: -0.015em !important;
+      }
+      .section-desc {
+        font-size: 15px !important;
+        line-height: 1.55 !important;
+      }
+      .specialist-name {
+        font-size: 26px !important;
+        line-height: 1.25 !important;
+      }
+
+      /* 4. Price Table Mobile Cards - No Horizontal Overflow */
+      .pricing-card {
+        padding: 20px 14px !important;
+        border-radius: var(--radius-lg) !important;
+        overflow: hidden !important;
+      }
+      .pricing-tabs {
+        gap: 6px !important;
+        margin-bottom: 18px !important;
+        padding-bottom: 0 !important;
+      }
+      .tab-nav-btn {
+        padding: 9px 13px !important;
+        font-size: 13.5px !important;
+      }
+      table.custom-table,
+      table.custom-table tbody,
+      table.custom-table tr,
+      table.custom-table td {
+        display: block !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+      table.custom-table thead {
+        display: none !important;
+      }
+      table.custom-table tr {
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 14px 0 !important;
+        border-bottom: 1px solid rgba(19, 42, 34, 0.08) !important;
+        gap: 6px !important;
+      }
+      table.custom-table tr.table-subheading-row {
+        padding: 10px 12px !important;
+        margin: 10px 0 4px 0 !important;
+        border-radius: 8px !important;
+      }
+      table.custom-table td {
+        padding: 0 !important;
+        border: none !important;
+      }
+      table.custom-table td.td-name strong {
+        font-size: 15.5px !important;
+        line-height: 1.35 !important;
+      }
+      table.custom-table td.td-name span {
+        font-size: 13px !important;
+        line-height: 1.5 !important;
+        margin-top: 4px !important;
+      }
+      table.custom-table td.td-price {
+        text-align: left !important;
+        font-size: 17px !important;
+        color: var(--pine-green) !important;
+        margin-top: 4px !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        align-items: baseline !important;
+        gap: 6px !important;
+      }
+      table.custom-table td.td-price .price-sub {
+        display: inline-block !important;
+        font-size: 12px !important;
+        color: var(--ink-muted) !important;
+        font-weight: 500 !important;
+        margin-top: 0 !important;
+      }
+
+      /* 5. Footer Social Messengers Mobile Stack */
+      .footer-social-bar {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        text-align: center !important;
+        padding: 22px 16px !important;
+        gap: 14px !important;
+        margin-top: 28px !important;
+      }
+      .footer-social-title {
+        font-size: 15px !important;
+        margin-bottom: 2px !important;
+      }
+      .footer-social-list {
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 10px !important;
+      }
+      .footer-social-pill {
+        width: 100% !important;
+        justify-content: center !important;
+        padding: 12px 18px !important;
+        box-sizing: border-box !important;
       }
     }
 
@@ -1741,11 +2025,11 @@
       <nav aria-label="Основная навигация">
         <ul class="nav-menu">
           <li><a href="#services" class="nav-link">Процедуры</a></li>
-          <li><a href="#prices" class="nav-link">Прайс</a></li>
           <li><a href="#doctor" class="nav-link">О&nbsp;враче</a></li>
           <li><a href="#cosmetics" class="nav-link">Космецевтика</a></li>
           <li><a href="#certs" class="nav-link">Лицензия</a></li>
           <li><a href="#reviews" class="nav-link">Отзывы</a></li>
+          <li><a href="#prices" class="nav-link">Прайс</a></li>
           <li><a href="#faq" class="nav-link">Вопросы</a></li>
           <li><a href="#contacts" class="nav-link">Контакты</a></li>
         </ul>
@@ -1753,8 +2037,10 @@
 
       <!-- Actions -->
       <div class="header-actions">
-        <button class="burger-btn" id="burger-toggle" aria-label="Открыть мобильное меню">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        <button class="burger-btn" id="burger-toggle" aria-label="Открыть мобильное меню" aria-expanded="false">
+          <span class="burger-bar"></span>
+          <span class="burger-bar"></span>
+          <span class="burger-bar"></span>
         </button>
       </div>
     </div>
@@ -1762,11 +2048,11 @@
     <!-- Mobile Drawer -->
     <div class="mobile-drawer" id="mobile-drawer">
       <a href="#services" class="nav-link mobile-link">Процедуры</a>
-      <a href="#prices" class="nav-link mobile-link">Прайс-лист</a>
       <a href="#doctor" class="nav-link mobile-link">О враче-косметологе</a>
       <a href="#cosmetics" class="nav-link mobile-link">Космецевтика</a>
       <a href="#certs" class="nav-link mobile-link">Лицензия и стерильность</a>
       <a href="#reviews" class="nav-link mobile-link">Отзывы пациентов</a>
+      <a href="#prices" class="nav-link mobile-link">Прайс-лист</a>
       <a href="#faq" class="nav-link mobile-link">Частые вопросы</a>
       <a href="#contacts" class="nav-link mobile-link">Контакты</a>
     </div>
@@ -2143,6 +2429,176 @@
 
           <div class="contrast-media" style="background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center;">
             <img src="img/s10-1.jpg" alt="Подарочные сертификаты косметологического кабинета Облака от 500 до 5000 рублей" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ========================================================================
+         DOCTOR & SPECIALIST SECTION
+         ======================================================================== -->
+    <section class="section-wrap" id="doctor" style="padding-top: 0;">
+      <div class="container">
+        <div class="specialist-card reveal-item">
+          <div class="specialist-photo-frame">
+            <img src="img/galina.jpg" alt="Врач-косметолог кабинета Облака" loading="lazy">
+          </div>
+
+          <div class="specialist-info" >
+            <span class="badge-pill mint">Врачебная эстетика с заботой о вас</span>
+            <h2 class="specialist-name">Галина Игнатьева - <br> ведущий специалист</h2>
+            <p class="specialist-creds">Врач-дерматовенеролог, косметолог · Стаж клинической практики более 12 лет</p>
+            
+            <p class="specialist-bio">
+              «Моя главная профессиональная цель — сохранять естественную красоту и молодость кожи без агрессивных травмирующих методик. Каждая процедура в кабинете строится на медицинском понимании анатомии и биохимии кожи. Мы не создаем эффект "надутого лица", мы восстанавливаем здоровые физиологические функции эпидермиса».
+            </p>
+
+            <div class="specialist-features">
+              <div class="spec-feature-item">
+                <strong>Высшее медицинское</strong>
+                <span>Регулярные сертификационные циклы и конгрессы</span>
+              </div>
+              <div class="spec-feature-item">
+                <strong>Индивидуальный протокол</strong>
+                <span>Учитываем аллергии, образ жизни и сопутствующие факторы</span>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         BRANDS & COSMETICS
+         ======================================================================== -->
+    <section class="section-wrap" id="cosmetics" style="padding-top: 0;">
+      <div class="container">
+        <div class="brands-section-card reveal-item">
+          <div class="section-header text-left" style="margin-bottom: 28px;">
+            <span class="badge-pill warm">Дерматокосмецевтика</span>
+            <h2 class="section-title">Работаем исключительно на оригинальных препаратах</h2>
+            <p class="section-desc">В кабинете «Облака» используются мировые бренды с подтвержденной клинической базой и сертификацией Минздрава.</p>
+          </div>
+
+          <div class="brands-banner-img">
+            <img src="img/assets/brands-strip.jpg" alt="Бренды косметики Holy Land, Christina, Gigi" loading="lazy">
+          </div>
+
+          <div class="brands-chips-grid">
+            <div class="brand-chip-card">
+              <h4>Holy Land (Израиль)</h4>
+              <p>Легендарные протоколы атравматичной чистки и ухода за проблемной кожей A-NOX и DOUBLE ACTION.</p>
+            </div>
+            <div class="brand-chip-card">
+              <h4>Christina (Израиль)</h4>
+              <p>Линии Comodex, Unstress и BioPhyto для моментального успокоения и восстановления куперозной кожи.</p>
+            </div>
+            <div class="brand-chip-card">
+              <h4>Gigi Laboratories</h4>
+              <p>Медицинская космецевтика высокой концентрации активных пептидов и фруктовых кислот.</p>
+            </div>
+            <div class="brand-chip-card">
+              <h4>Sesderma (Испания)</h4>
+              <p>Липосомированные пилинги и сыворотки с максимальной биодоступностью без раздражения.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CERTIFICATES & MEDICAL SAFETY
+         ======================================================================== -->
+    <section class="section-wrap" id="certs" style="padding-top: 0;">
+      <div class="container">
+        <div class="section-header reveal-item">
+          <span class="badge-pill mint">Медицинская безопасность</span>
+          <h2 class="section-title">Сертифицированное оснащение кабинета</h2>
+          <p class="section-desc">Ваша безопасность — наш строгий приоритет: стерильность, контроль сроков годности и официальная лицензия.</p>
+        </div>
+
+        <div class="certs-grid">
+          <div class="cert-box">
+            <div class="cert-img-wrap">
+              <img src="img/assets/cert-banner.jpg" alt="Медицинская лицензия кабинета Облака" loading="lazy">
+            </div>
+            <div class="cert-content">
+              <h3>Лицензия на медицинскую деятельность</h3>
+              <p>Кабинет соответствует всем санитарно-эпидемиологическим нормам Роспотребнадзора. Все инвазивные и аппаратные вмешательства легитимны и безопасны.</p>
+            </div>
+          </div>
+
+          <div class="cert-box">
+            <div class="cert-img-wrap">
+              <img src="img/assets/stock/skincare.jpg" alt="Стерильные препараты и сыворотки" loading="lazy">
+            </div>
+            <div class="cert-content">
+              <h3>Хранение и контроль препаратов</h3>
+              <p>Космецевтика и стерильные сыворотки хранятся в строгом температурном режиме. Вскрытие одноразовых упаковок производится строго в присутствии пациента.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         REVIEWS (Solus Style Contrasting Cards)
+         ======================================================================== -->
+    <section class="section-wrap" id="reviews" style="padding-top: 0;">
+      <div class="container">
+        <div class="section-header reveal-item">
+          <span class="badge-pill peach">Истории преображения</span>
+          <h2 class="section-title">Что говорят наши пациенты</h2>
+          <p class="section-desc">Более 1 200 довольных пациентов доверяют свою кожу специалистам кабинета «Облака».</p>
+        </div>
+
+        <div class="reviews-grid">
+          <!-- Review 1 (Peach) -->
+          <div class="review-card reveal-item peach">
+            <p class="review-text">
+              «Галина-отличный специалист. Видно, что профессионал своего дела. Очень нравится, что всё доступно объясняет, понятно отвечает на всё интересующие вопросы».
+            </p>
+            <div class="review-author">
+              <div class="author-avatar">ЕВ</div>
+              <div class="author-details">
+                <strong>Елена</strong>
+                <span>Атравматичный уход при куперозе</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 2 (Dark Pine Contrast) -->
+          <div class="review-card reveal-item dark">
+            <p class="review-text">
+              «Прекрасный салон с отличным месторасположением.
+                Всегда приятно зайти в чистый холл с заготовленными тапками и бахилами.
+                Галина, она же великий гуру косметологии, никогда не посоветует лишнего и делает все аккуратно и качественно. И дает отличные советы по уходу и общей медицине.
+                Салон рекомендую, Галину хвалю!!».
+            </p>
+            <div class="review-author">
+              <div class="author-avatar" style="background-color: var(--bg-peach);">МА</div>
+              <div class="author-details">
+                <strong style="color: #FFFFFF;">Наталья</strong>
+                <span>Курс терапии розацеа</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 3 (Mint) -->
+          <div class="review-card reveal-item mint">
+            <p class="review-text">
+              «Салон с очень приятным и грамотным коллективом. Приятная и расслабляющая обстановка. Косметолог Галина настоящий профессионал и чудесница.».
+            </p>
+            <div class="review-author">
+              <div class="author-avatar">ОС</div>
+              <div class="author-details">
+                <strong>Мария</strong>
+                <span>Биолифтинг и уход за веками</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -2659,175 +3115,6 @@
     </section>
 
     <!-- ========================================================================
-         DOCTOR & SPECIALIST SECTION
-         ======================================================================== -->
-    <section class="section-wrap" id="doctor" style="padding-top: 0;">
-      <div class="container">
-        <div class="specialist-card reveal-item">
-          <div class="specialist-photo-frame">
-            <img src="img/galina.jpg" alt="Врач-косметолог кабинета Облака" loading="lazy">
-          </div>
-
-          <div class="specialist-info" >
-            <span class="badge-pill mint">Врачебная эстетика с заботой о вас</span>
-            <h2 class="specialist-name">Галина Игнатьева - <br> ведущий специалист</h2>
-            <p class="specialist-creds">Врач-дерматовенеролог, косметолог · Стаж клинической практики более 12 лет</p>
-            
-            <p class="specialist-bio">
-              «Моя главная профессиональная цель — сохранять естественную красоту и молодость кожи без агрессивных травмирующих методик. Каждая процедура в кабинете строится на медицинском понимании анатомии и биохимии кожи. Мы не создаем эффект "надутого лица", мы восстанавливаем здоровые физиологические функции эпидермиса».
-            </p>
-
-            <div class="specialist-features">
-              <div class="spec-feature-item">
-                <strong>Высшее медицинское</strong>
-                <span>Регулярные сертификационные циклы и конгрессы</span>
-              </div>
-              <div class="spec-feature-item">
-                <strong>Индивидуальный протокол</strong>
-                <span>Учитываем аллергии, образ жизни и сопутствующие факторы</span>
-              </div>
-            </div>
-
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================================
-         BRANDS & COSMETICS
-         ======================================================================== -->
-    <section class="section-wrap" id="cosmetics" style="padding-top: 0;">
-      <div class="container">
-        <div class="brands-section-card reveal-item">
-          <div class="section-header text-left" style="margin-bottom: 28px;">
-            <span class="badge-pill warm">Дерматокосмецевтика</span>
-            <h2 class="section-title">Работаем исключительно на оригинальных препаратах</h2>
-            <p class="section-desc">В кабинете «Облака» используются мировые бренды с подтвержденной клинической базой и сертификацией Минздрава.</p>
-          </div>
-
-          <div class="brands-banner-img">
-            <img src="img/assets/brands-strip.jpg" alt="Бренды косметики Holy Land, Christina, Gigi" loading="lazy">
-          </div>
-
-          <div class="brands-chips-grid">
-            <div class="brand-chip-card">
-              <h4>Holy Land (Израиль)</h4>
-              <p>Легендарные протоколы атравматичной чистки и ухода за проблемной кожей A-NOX и DOUBLE ACTION.</p>
-            </div>
-            <div class="brand-chip-card">
-              <h4>Christina (Израиль)</h4>
-              <p>Линии Comodex, Unstress и BioPhyto для моментального успокоения и восстановления куперозной кожи.</p>
-            </div>
-            <div class="brand-chip-card">
-              <h4>Gigi Laboratories</h4>
-              <p>Медицинская космецевтика высокой концентрации активных пептидов и фруктовых кислот.</p>
-            </div>
-            <div class="brand-chip-card">
-              <h4>Sesderma (Испания)</h4>
-              <p>Липосомированные пилинги и сыворотки с максимальной биодоступностью без раздражения.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================================
-         CERTIFICATES & MEDICAL SAFETY
-         ======================================================================== -->
-    <section class="section-wrap" id="certs" style="padding-top: 0;">
-      <div class="container">
-        <div class="section-header reveal-item">
-          <span class="badge-pill mint">Медицинская безопасность</span>
-          <h2 class="section-title">Сертифицированное оснащение кабинета</h2>
-          <p class="section-desc">Ваша безопасность — наш строгий приоритет: стерильность, контроль сроков годности и официальная лицензия.</p>
-        </div>
-
-        <div class="certs-grid">
-          <div class="cert-box">
-            <div class="cert-img-wrap">
-              <img src="img/assets/cert-banner.jpg" alt="Медицинская лицензия кабинета Облака" loading="lazy">
-            </div>
-            <div class="cert-content">
-              <h3>Лицензия на медицинскую деятельность</h3>
-              <p>Кабинет соответствует всем санитарно-эпидемиологическим нормам Роспотребнадзора. Все инвазивные и аппаратные вмешательства легитимны и безопасны.</p>
-            </div>
-          </div>
-
-          <div class="cert-box">
-            <div class="cert-img-wrap">
-              <img src="img/assets/stock/skincare.jpg" alt="Стерильные препараты и сыворотки" loading="lazy">
-            </div>
-            <div class="cert-content">
-              <h3>Хранение и контроль препаратов</h3>
-              <p>Космецевтика и стерильные сыворотки хранятся в строгом температурном режиме. Вскрытие одноразовых упаковок производится строго в присутствии пациента.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================================
-         REVIEWS (Solus Style Contrasting Cards)
-         ======================================================================== -->
-    <section class="section-wrap" id="reviews" style="padding-top: 0;">
-      <div class="container">
-        <div class="section-header reveal-item">
-          <span class="badge-pill peach">Истории преображения</span>
-          <h2 class="section-title">Что говорят наши пациенты</h2>
-          <p class="section-desc">Более 1 200 довольных пациентов доверяют свою кожу специалистам кабинета «Облака».</p>
-        </div>
-
-        <div class="reviews-grid">
-          <!-- Review 1 (Peach) -->
-          <div class="review-card reveal-item peach">
-            <p class="review-text">
-              «Галина-отличный специалист. Видно, что профессионал своего дела. Очень нравится, что всё доступно объясняет, понятно отвечает на всё интересующие вопросы».
-            </p>
-            <div class="review-author">
-              <div class="author-avatar">ЕВ</div>
-              <div class="author-details">
-                <strong>Елена</strong>
-                <span>Атравматичный уход при куперозе</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Review 2 (Dark Pine Contrast) -->
-          <div class="review-card reveal-item dark">
-            <p class="review-text">
-              «Прекрасный салон с отличным месторасположением.
-                Всегда приятно зайти в чистый холл с заготовленными тапками и бахилами.
-                Галина, она же великий гуру косметологии, никогда не посоветует лишнего и делает все аккуратно и качественно. И дает отличные советы по уходу и общей медицине.
-                Салон рекомендую, Галину хвалю!!».
-            </p>
-            <div class="review-author">
-              <div class="author-avatar" style="background-color: var(--bg-peach);">МА</div>
-              <div class="author-details">
-                <strong style="color: #FFFFFF;">Наталья</strong>
-                <span>Курс терапии розацеа</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Review 3 (Mint) -->
-          <div class="review-card reveal-item mint">
-            <p class="review-text">
-              «Салон с очень приятным и грамотным коллективом. Приятная и расслабляющая обстановка. Косметолог Галина настоящий профессионал и чудесница.».
-            </p>
-            <div class="review-author">
-              <div class="author-avatar">ОС</div>
-              <div class="author-details">
-                <strong>Мария</strong>
-                <span>Биолифтинг и уход за веками</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================================
          FAQ (Interactive Accordion Solus Style)
          ======================================================================== -->
     <section class="section-wrap" id="faq" style="padding-top: 0;">
@@ -2995,19 +3282,23 @@
        SCRIPTS: Interactions, Filters, Tabs, FAQ, Booking
        ======================================================================== -->
   <script>
-    // 1. Mobile Drawer Toggle
+    // 1. Mobile Drawer Toggle with Animated Icon
     const burgerToggle = document.getElementById('burger-toggle');
     const mobileDrawer = document.getElementById('mobile-drawer');
     const mobileLinks = document.querySelectorAll('.mobile-link');
 
     if (burgerToggle && mobileDrawer) {
       burgerToggle.addEventListener('click', () => {
-        mobileDrawer.classList.toggle('open');
+        const isOpen = mobileDrawer.classList.toggle('open');
+        burgerToggle.classList.toggle('active', isOpen);
+        burgerToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       });
 
       mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
           mobileDrawer.classList.remove('open');
+          burgerToggle.classList.remove('active');
+          burgerToggle.setAttribute('aria-expanded', 'false');
         });
       });
     }
