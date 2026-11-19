@@ -2004,6 +2004,73 @@
       }
     }
 
+
+    /* Expand / Collapse Button Styling for Mobile Friendly Lists */
+    .catalog-toggle-wrap, .price-toggle-wrap {
+      display: none;
+      justify-content: center;
+      margin-top: 24px;
+      padding-top: 6px;
+    }
+
+    .catalog-toggle-btn, .price-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 26px;
+      border-radius: 999px;
+      background-color: #FFFFFF;
+      border: 1.5px solid rgba(19, 42, 34, 0.15);
+      color: var(--ink-dark);
+      font-family: var(--font-heading);
+      font-size: 14.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 12px rgba(19, 42, 34, 0.05);
+      width: auto;
+      max-width: 100%;
+    }
+
+    .catalog-toggle-btn:hover, .price-toggle-btn:hover {
+      background-color: var(--pine-green);
+      color: #FFFFFF;
+      border-color: var(--pine-green);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(19, 42, 34, 0.16);
+    }
+
+    .catalog-toggle-icon, .price-toggle-icon {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      flex-shrink: 0;
+    }
+
+    .catalog-toggle-btn.active .catalog-toggle-icon,
+    .price-toggle-btn.active .price-toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    @media (max-width: 900px) {
+      .catalog-toggle-wrap {
+        display: flex;
+      }
+      .catalog-toggle-btn {
+        width: 100%;
+        box-sizing: border-box;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .price-toggle-wrap {
+        display: flex;
+      }
+      .price-toggle-btn {
+        width: 100%;
+        box-sizing: border-box;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -2380,6 +2447,14 @@
             </div>
           </article>
 
+        </div>
+
+        <!-- Expand / Collapse Catalog Toggle (Mobile Friendly) -->
+        <div class="catalog-toggle-wrap">
+          <button class="btn btn-outline-dark catalog-toggle-btn" id="toggle-services-btn" aria-expanded="false">
+            <span class="catalog-toggle-text">Смотреть все процедуры (12)</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="catalog-toggle-icon"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
         </div>
       </div>
     </section>
@@ -3110,6 +3185,13 @@
             </table>
           </div>
 
+          <!-- Expand / Collapse Price Toggle (Mobile Friendly) -->
+          <div class="price-toggle-wrap">
+            <button class="btn btn-outline-dark price-toggle-btn" id="toggle-price-btn" aria-expanded="false">
+              <span class="price-toggle-text">Показать весь прайс</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="price-toggle-icon"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -3303,30 +3385,115 @@
       });
     }
 
-    // 2. Service Bento Filtering
+    // 2. Service Bento Filtering & Mobile Expand/Collapse
     const filterButtons = document.querySelectorAll('.filter-btn');
     const serviceItems = document.querySelectorAll('.service-item');
+    const toggleServicesBtn = document.getElementById('toggle-services-btn');
+    const toggleServicesText = toggleServicesBtn ? toggleServicesBtn.querySelector('.catalog-toggle-text') : null;
+
+    let isServicesExpanded = false;
+    let currentFilter = 'all';
+
+    function updateServicesVisibility() {
+      const isMobile = window.innerWidth <= 900;
+      let visibleCount = 0;
+      let totalMatching = 0;
+
+      serviceItems.forEach(item => {
+        const matchesFilter = (currentFilter === 'all' || item.getAttribute('data-category') === currentFilter);
+        if (matchesFilter) {
+          totalMatching++;
+          if (!isMobile || isServicesExpanded || visibleCount < 4) {
+            item.style.display = 'flex';
+            visibleCount++;
+          } else {
+            item.style.display = 'none';
+          }
+        } else {
+          item.style.display = 'none';
+        }
+      });
+
+      if (toggleServicesBtn) {
+        if (!isMobile || totalMatching <= 4) {
+          toggleServicesBtn.parentElement.style.display = 'none';
+        } else {
+          toggleServicesBtn.parentElement.style.display = 'flex';
+          if (isServicesExpanded) {
+            toggleServicesText.textContent = 'Свернуть процедуры';
+            toggleServicesBtn.classList.add('active');
+            toggleServicesBtn.setAttribute('aria-expanded', 'true');
+          } else {
+            toggleServicesText.textContent = `Смотреть все процедуры (${totalMatching})`;
+            toggleServicesBtn.classList.remove('active');
+            toggleServicesBtn.setAttribute('aria-expanded', 'false');
+          }
+        }
+      }
+    }
 
     filterButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         filterButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-
-        const filter = btn.getAttribute('data-filter');
-
-        serviceItems.forEach(item => {
-          if (filter === 'all' || item.getAttribute('data-category') === filter) {
-            item.style.display = 'flex';
-          } else {
-            item.style.display = 'none';
-          }
-        });
+        currentFilter = btn.getAttribute('data-filter') || 'all';
+        isServicesExpanded = false;
+        updateServicesVisibility();
       });
     });
 
-    // 3. Pricing Tabs
+    if (toggleServicesBtn) {
+      toggleServicesBtn.addEventListener('click', () => {
+        isServicesExpanded = !isServicesExpanded;
+        updateServicesVisibility();
+        if (!isServicesExpanded) {
+          const section = document.getElementById('services');
+          if (section) section.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    }
+
+    // 3. Pricing Tabs & Mobile Expand/Collapse
     const tabButtons = document.querySelectorAll('.tab-nav-btn');
     const tabPanels = document.querySelectorAll('.price-table-group');
+    const togglePriceBtn = document.getElementById('toggle-price-btn');
+    const togglePriceText = togglePriceBtn ? togglePriceBtn.querySelector('.price-toggle-text') : null;
+
+    let isPriceExpanded = false;
+
+    function updatePriceVisibility() {
+      const isMobile = window.innerWidth <= 768;
+      const activePanel = document.querySelector('.price-table-group.active');
+      if (!activePanel) return;
+
+      const rows = activePanel.querySelectorAll('tbody tr:not(.table-subheading-row)');
+      const totalRows = rows.length;
+
+      rows.forEach((row, idx) => {
+        if (!isMobile || isPriceExpanded || idx < 5) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+
+      if (togglePriceBtn) {
+        if (!isMobile || totalRows <= 5) {
+          togglePriceBtn.parentElement.style.display = 'none';
+        } else {
+          togglePriceBtn.parentElement.style.display = 'flex';
+          if (isPriceExpanded) {
+            togglePriceText.textContent = 'Свернуть прайс';
+            togglePriceBtn.classList.add('active');
+            togglePriceBtn.setAttribute('aria-expanded', 'true');
+          } else {
+            togglePriceText.textContent = `Показать весь прайс (${totalRows} позиций)`;
+            togglePriceBtn.classList.remove('active');
+            togglePriceBtn.setAttribute('aria-expanded', 'false');
+          }
+        }
+      }
+    }
 
     tabButtons.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -3339,7 +3506,29 @@
         if (targetPanel) {
           targetPanel.classList.add('active');
         }
+        isPriceExpanded = false;
+        updatePriceVisibility();
       });
+    });
+
+    if (togglePriceBtn) {
+      togglePriceBtn.addEventListener('click', () => {
+        isPriceExpanded = !isPriceExpanded;
+        updatePriceVisibility();
+        if (!isPriceExpanded) {
+          const priceSec = document.getElementById('prices');
+          if (priceSec) priceSec.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    }
+
+    // Initial call & resize listener
+    updateServicesVisibility();
+    updatePriceVisibility();
+
+    window.addEventListener('resize', () => {
+      updateServicesVisibility();
+      updatePriceVisibility();
     });
 
     // 4. FAQ Accordion
