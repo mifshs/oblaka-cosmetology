@@ -20,6 +20,8 @@
        ========================================================================== */
     :root {
       /* Palette */
+      --pine-green: #132A22;
+      --pine-green-hover: #0B1C16;
       --bg-page: #FAF7F2;          /* Soft warm linen / cream background */
       --bg-card: #FFFFFF;          /* Pure card surface */
       --bg-warm: #F4ECE1;          /* Warm sand card */
@@ -1733,12 +1735,13 @@
       box-shadow: 0 2px 6px rgba(19, 42, 34, 0.04);
     }
 
-    .footer-social-pill:hover {
-      background-color: var(--pine-green);
-      color: #FFFFFF;
-      border-color: var(--pine-green);
+    .footer-social-pill:hover,
+    .footer-social-pill:focus-visible {
+      background-color: #132A22 !important;
+      color: #FFFFFF !important;
+      border-color: #132A22 !important;
       transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(19, 42, 34, 0.16);
+      box-shadow: 0 8px 22px rgba(19, 42, 34, 0.22);
     }
 
     .footer-social-icon {
@@ -2027,68 +2030,101 @@
     .catalog-toggle-wrap, .price-toggle-wrap {
       display: none;
       justify-content: center;
-      margin-top: 24px;
-      padding-top: 6px;
+      margin-top: 26px;
+      padding-top: 8px;
+      width: 100%;
     }
 
     .catalog-toggle-btn, .price-toggle-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      padding: 13px 26px;
+      gap: 12px;
+      padding: 14px 28px;
       border-radius: 999px;
       background-color: #FFFFFF;
-      border: 1.5px solid rgba(19, 42, 34, 0.15);
-      color: var(--ink-dark);
+      border: 2px solid #132A22;
+      color: #132A22;
       font-family: var(--font-heading);
-      font-size: 14.5px;
+      font-size: 15px;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 4px 12px rgba(19, 42, 34, 0.05);
+      box-shadow: 0 4px 14px rgba(19, 42, 34, 0.08);
       width: auto;
       max-width: 100%;
-    }
-
-    .catalog-toggle-btn:hover, .price-toggle-btn:hover {
-      background-color: var(--pine-green);
-      color: #FFFFFF;
-      border-color: var(--pine-green);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(19, 42, 34, 0.16);
+      text-align: center;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .catalog-toggle-icon, .price-toggle-icon {
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.25s ease;
       flex-shrink: 0;
+      stroke: currentColor;
+    }
+
+    .catalog-toggle-btn:hover,
+    .price-toggle-btn:hover,
+    .catalog-toggle-btn:focus-visible,
+    .price-toggle-btn:focus-visible {
+      background-color: #132A22 !important;
+      color: #FFFFFF !important;
+      border-color: #132A22 !important;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(19, 42, 34, 0.22);
+    }
+
+    .catalog-toggle-btn:hover .catalog-toggle-icon,
+    .price-toggle-btn:hover .price-toggle-icon,
+    .catalog-toggle-btn:focus-visible .catalog-toggle-icon,
+    .price-toggle-btn:focus-visible .price-toggle-icon {
+      stroke: #FFFFFF !important;
+    }
+
+    /* Active (Expanded) State: solid dark pine green, 100% visible against any background */
+    .catalog-toggle-btn.active,
+    .price-toggle-btn.active {
+      background-color: #132A22 !important;
+      color: #FFFFFF !important;
+      border: 2px solid #132A22 !important;
+      box-shadow: 0 6px 20px rgba(19, 42, 34, 0.18);
     }
 
     .catalog-toggle-btn.active .catalog-toggle-icon,
     .price-toggle-btn.active .price-toggle-icon {
+      stroke: #FFFFFF !important;
       transform: rotate(180deg);
     }
 
+    .catalog-toggle-btn.active:hover,
+    .price-toggle-btn.active:hover {
+      background-color: #0B1C16 !important;
+      border-color: #0B1C16 !important;
+      color: #FFFFFF !important;
+    }
+
     @media (max-width: 900px) {
-      .catalog-toggle-wrap {
-        display: flex;
-      }
-      .catalog-toggle-btn {
-        width: 100%;
-        box-sizing: border-box;
-      }
-    }
-
-    @media (max-width: 768px) {
+      .catalog-toggle-wrap,
       .price-toggle-wrap {
-        display: flex;
+        display: flex !important;
       }
+      .catalog-toggle-btn,
       .price-toggle-btn {
-        width: 100%;
-        box-sizing: border-box;
+        width: 100% !important;
+        box-sizing: border-box !important;
       }
     }
 
+    /* Reliable hiding overrides display: flex !important on mobile */
+    table.custom-table tr.price-row-collapsed,
+    table.custom-table tbody tr.price-row-collapsed {
+      display: none !important;
+    }
+
+    .service-item.service-item-hidden {
+      display: none !important;
+    }
   </style>
 </head>
 <body>
@@ -2469,7 +2505,7 @@
 
         <!-- Expand / Collapse Catalog Toggle (Mobile Friendly) -->
         <div class="catalog-toggle-wrap">
-          <button class="btn btn-outline-dark catalog-toggle-btn" id="toggle-services-btn" aria-expanded="false">
+          <button class="catalog-toggle-btn" id="toggle-services-btn" aria-expanded="false">
             <span class="catalog-toggle-text">Смотреть все процедуры (12)</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="catalog-toggle-icon"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </button>
@@ -3205,7 +3241,7 @@
 
           <!-- Expand / Collapse Price Toggle (Mobile Friendly) -->
           <div class="price-toggle-wrap">
-            <button class="btn btn-outline-dark price-toggle-btn" id="toggle-price-btn" aria-expanded="false">
+            <button class="price-toggle-btn" id="toggle-price-btn" aria-expanded="false">
               <span class="price-toggle-text">Показать весь прайс</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="price-toggle-icon"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
@@ -3416,17 +3452,20 @@
         if (matchesFilter) {
           totalMatching++;
           if (!isMobile || isServicesExpanded || visibleCount < 4) {
+            item.classList.remove('service-item-hidden');
             item.style.display = 'flex';
             visibleCount++;
           } else {
+            item.classList.add('service-item-hidden');
             item.style.display = 'none';
           }
         } else {
+          item.classList.add('service-item-hidden');
           item.style.display = 'none';
         }
       });
 
-      if (toggleServicesBtn) {
+      if (toggleServicesBtn && toggleServicesBtn.parentElement) {
         if (!isMobile || totalMatching <= 4) {
           toggleServicesBtn.parentElement.style.display = 'none';
         } else {
@@ -3474,35 +3513,56 @@
     let isPriceExpanded = false;
 
     function updatePriceVisibility() {
-      const isMobile = window.innerWidth <= 768;
+      const isMobile = window.innerWidth <= 900;
       const activePanel = document.querySelector('.price-table-group.active');
       if (!activePanel) return;
 
-      const rows = activePanel.querySelectorAll('tbody tr:not(.table-subheading-row)');
-      const totalRows = rows.length;
+      const allRows = activePanel.querySelectorAll('tbody tr');
+      const dataRows = activePanel.querySelectorAll('tbody tr:not(.table-subheading-row)');
+      const totalRows = dataRows.length;
 
-      rows.forEach((row, idx) => {
-        if (!isMobile || isPriceExpanded || idx < 5) {
-          row.style.display = '';
-        } else {
-          row.style.display = 'none';
-        }
-      });
-
-      if (togglePriceBtn) {
-        if (!isMobile || totalRows <= 5) {
+      if (!isMobile || totalRows <= 5) {
+        allRows.forEach(row => row.classList.remove('price-row-collapsed'));
+        if (togglePriceBtn && togglePriceBtn.parentElement) {
           togglePriceBtn.parentElement.style.display = 'none';
-        } else {
-          togglePriceBtn.parentElement.style.display = 'flex';
-          if (isPriceExpanded) {
-            togglePriceText.textContent = 'Свернуть прайс';
-            togglePriceBtn.classList.add('active');
-            togglePriceBtn.setAttribute('aria-expanded', 'true');
+        }
+        return;
+      }
+
+      if (togglePriceBtn && togglePriceBtn.parentElement) {
+        togglePriceBtn.parentElement.style.display = 'flex';
+      }
+
+      if (isPriceExpanded) {
+        allRows.forEach(row => row.classList.remove('price-row-collapsed'));
+        if (togglePriceBtn) {
+          togglePriceText.textContent = 'Свернуть прайс';
+          togglePriceBtn.classList.add('active');
+          togglePriceBtn.setAttribute('aria-expanded', 'true');
+        }
+      } else {
+        let dataCount = 0;
+        allRows.forEach(row => {
+          if (row.classList.contains('table-subheading-row')) {
+            if (dataCount < 5) {
+              row.classList.remove('price-row-collapsed');
+            } else {
+              row.classList.add('price-row-collapsed');
+            }
           } else {
-            togglePriceText.textContent = `Показать весь прайс (${totalRows} позиций)`;
-            togglePriceBtn.classList.remove('active');
-            togglePriceBtn.setAttribute('aria-expanded', 'false');
+            dataCount++;
+            if (dataCount <= 5) {
+              row.classList.remove('price-row-collapsed');
+            } else {
+              row.classList.add('price-row-collapsed');
+            }
           }
+        });
+
+        if (togglePriceBtn) {
+          togglePriceText.textContent = `Показать весь прайс (${totalRows} позиций)`;
+          togglePriceBtn.classList.remove('active');
+          togglePriceBtn.setAttribute('aria-expanded', 'false');
         }
       }
     }
