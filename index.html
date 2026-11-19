@@ -1521,132 +1521,7 @@
       }
     }
 
-    /* ==========================================================================
-       BOOKING & CONTACTS BENTO
-       ========================================================================== */
-    .booking-bento {
-      background-color: #FFFFFF;
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--border-subtle);
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-    }
 
-    .booking-contacts-col {
-      background-color: var(--bg-warm);
-      padding: 56px;
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-      border-right: 1px solid var(--border-subtle);
-    }
-
-    .contact-block-item {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-
-    .contact-block-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background-color: #FFFFFF;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--ink-dark);
-      box-shadow: var(--shadow-sm);
-      flex-shrink: 0;
-    }
-
-    .contact-block-text strong {
-      display: block;
-      font-family: var(--font-heading);
-      font-size: 14.5px;
-      color: var(--ink-dark);
-      margin-bottom: 3px;
-    }
-
-    .contact-block-text p, .contact-block-text a {
-      font-size: 15px;
-      color: var(--ink-body);
-      line-height: 1.5;
-    }
-
-    .contact-block-text a:hover {
-      color: var(--ink-dark);
-      text-decoration: underline;
-    }
-
-    .booking-form-col {
-      padding: 56px;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .form-label {
-      font-family: var(--font-heading);
-      font-size: 13.5px;
-      font-weight: 600;
-      color: var(--ink-dark);
-    }
-
-    .form-input, .form-select, .form-textarea {
-      width: 100%;
-      padding: 14px 18px;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--border-subtle);
-      background-color: var(--bg-page);
-      font-size: 15px;
-      color: var(--ink-dark);
-      transition: all var(--transition-fast);
-    }
-
-    .form-input:focus, .form-select:focus, .form-textarea:focus {
-      outline: none;
-      border-color: var(--ink-dark);
-      background-color: #FFFFFF;
-      box-shadow: 0 0 0 3px rgba(19, 42, 34, 0.08);
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .form-privacy-note {
-      font-size: 12.5px;
-      color: var(--ink-muted);
-      line-height: 1.5;
-    }
-
-    @media (max-width: 992px) {
-      .booking-bento {
-        grid-template-columns: 1fr;
-      }
-      .booking-contacts-col {
-        border-right: none;
-        border-bottom: 1px solid var(--border-subtle);
-        padding: 36px 24px;
-      }
-      .booking-form-col {
-        padding: 36px 24px;
-      }
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-    }
 
     /* ==========================================================================
        SITE FOOTER
@@ -1737,60 +1612,106 @@
       }
     }
 
+
+
     /* ==========================================================================
-       TOAST / NOTIFICATION
+       SCROLL REVEAL ANIMATIONS
        ========================================================================== */
-    .toast-banner {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      background-color: var(--ink-dark);
-      color: #FFFFFF;
-      padding: 16px 24px;
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-lg);
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal-item.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .service-price-label {
+      font-size: 13px;
+      color: var(--ink-muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .price-sub {
+      display: block;
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--ink-muted);
+      margin-top: 2px;
+    }
+
+    /* Footer Social Messenger Bar */
+    .footer-social-bar {
+      margin-top: 36px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(19, 42, 34, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-social-title {
       font-family: var(--font-heading);
-      font-size: 14px;
       font-weight: 600;
+      font-size: 15px;
+      color: var(--ink-dark);
+    }
+
+    .footer-social-list {
       display: flex;
       align-items: center;
       gap: 12px;
-      z-index: 1000;
-      transform: translateY(120px);
-      opacity: 0;
-      transition: all var(--transition-smooth);
-      pointer-events: none;
+      flex-wrap: wrap;
     }
 
-    .toast-banner.show {
-      transform: translateY(0);
-      opacity: 1;
-      pointer-events: auto;
+    .footer-social-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background-color: #ffffff;
+      border: 1px solid rgba(19, 42, 34, 0.12);
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink-dark);
+      text-decoration: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 2px 6px rgba(19, 42, 34, 0.04);
     }
 
-    /* Floating CTA for Mobile */
-    .mobile-float-cta {
-      display: none;
-      position: fixed;
-      bottom: 16px;
-      left: 16px;
-      right: 16px;
-      z-index: 90;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    .footer-social-pill:hover {
+      background-color: var(--pine-green);
+      color: #ffffff;
+      border-color: var(--pine-green);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(19, 42, 34, 0.15);
     }
 
-    @media (max-width: 768px) {
-      .mobile-float-cta {
-        display: block;
-      }
-      .mobile-float-cta .btn {
-        width: 100%;
-        box-shadow: none;
-      }
-      body {
-        padding-bottom: 60px;
+    .footer-social-pill svg {
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
+
+    .footer-social-pill:hover svg {
+      transform: scale(1.1);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal-item {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
       }
     }
+
   </style>
 </head>
 <body>
@@ -1850,7 +1771,7 @@
     <section class="hero-section">
       <div class="container">
         <div class="hero-banner">
-          <div class="hero-content">
+          <div class="hero-content reveal-item">
             <div class="hero-eyebrow">
               <span class="badge-pill mint">Косметология Галины Игнатьевой</span>
             </div>
@@ -1886,7 +1807,7 @@
           </div>
 
           <!-- Hero Media -->
-          <div class="hero-media-wrapper">
+          <div class="hero-media-wrapper reveal-item">
             <div class="hero-image-card">
               <img src="img/sa5.jpg" alt="Процедура ухода за кожей лица в кабинете Облака" width="600" height="480">
             </div>
@@ -1954,7 +1875,7 @@
          ======================================================================== -->
     <section class="section-wrap" id="services">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header reveal-item">
           <span class="badge-pill peach">Услуги и методики</span>
           <h2 class="section-title">Персонализированные программы ухода</h2>
           <p class="section-desc">Каждый протокол подбирается индивидуально после осмотра типа, состояния и потребностей вашей кожи.</p>
@@ -1974,7 +1895,7 @@
         <div class="services-bento" id="services-grid">
 
           <!-- 1: Сухая с куперозом -->
-          <article class="service-item" data-category="face">
+          <article class="service-item reveal-item" data-category="face">
             <div class="service-thumb">
               <span class="badge-pill peach service-category-badge">Лицо</span>
               <img src="img/s1.jpg" alt="Уход для сухой кожи с куперозом" loading="lazy">
@@ -1983,14 +1904,14 @@
               <h3 class="service-name">Атравматичный очищающий уход для сухой кожи с куперозом</h3>
               <p class="service-description">Деликатное очищение и укрепление сосудистой стенки без микротравм, покраснений и нагрева.</p>
               <div class="service-footer">
+                <span class="service-price-label">Стоимость</span>
                 <span class="service-price-tag">от 2 600 ₽</span>
-                <button class="btn btn-primary service-book-btn" onclick="selectProcedure('Уход для сухой кожи с куперозом')">Записаться</button>
               </div>
             </div>
           </article>
 
           <!-- 2: Жирная кожа -->
-          <article class="service-item" data-category="face">
+          <article class="service-item reveal-item" data-category="face">
             <div class="service-thumb">
               <span class="badge-pill peach service-category-badge">Лицо</span>
               <img src="img/s2-1.jpg" alt="Очищающий уход для жирной кожи" loading="lazy">
@@ -1999,14 +1920,14 @@
               <h3 class="service-name">Атравматичный очищающий уход для жирной кожи</h3>
               <p class="service-description">Глубокое очищение протоков сальных желез, себорегуляция и сужение пор без пересушивания эпидермиса.</p>
               <div class="service-footer">
+                <span class="service-price-label">Стоимость</span>
                 <span class="service-price-tag">от 1 800 ₽</span>
-                <button class="btn btn-primary service-book-btn" onclick="selectProcedure('Уход для жирной кожи')">Записаться</button>
               </div>
             </div>
           </article>
 
           <!-- 3: Сухая с розацеа -->
-          <article class="service-item" data-category="face">
+          <article class="service-item reveal-item" data-category="face">
             <div class="service-thumb">
               <span class="badge-pill peach service-category-badge">Лицо</span>
               <img src="img/s3-1.jpg" alt="Уход для кожи с розацеа" loading="lazy">
@@ -2015,14 +1936,14 @@
               <h3 class="service-name">Атравматичный уход для сухой кожи с розацеа</h3>
               <p class="service-description">Специализированная программа снятия воспалительного процесса, снижения реактивности и восстановления барьера.</p>
               <div class="service-footer">
+                <span class="service-price-label">Стоимость</span>
                 <span class="service-price-tag">от 1 600 ₽</span>
-                <button class="btn btn-primary service-book-btn" onclick="selectProcedure('Уход для сухой кожи с розацеа')">Записаться</button>
               </div>
             </div>
           </article>
 
           <!-- 4: Жирная с розацеа -->
-          <article class="service-item" data-category="face">
+          <article class="service-item reveal-item" data-category="face">
             <div class="service-thumb">
               <span class="badge-pill peach service-category-badge">Лицо</span>
               <img src="img/s4-1.jpg" alt="Уход для жирной кожи с розацеа" loading="lazy">
@@ -2031,14 +1952,14 @@
               <h3 class="service-name">Атравматичный уход для жирной кожи с розацеа</h3>
               <p class="service-description">Мягкая нормализация микробиома, регуляция жирности и устранение эритемы по лечебным протоколам.</p>
               <div class="service-footer">
+                <span class="service-price-label">Стоимость</span>
                 <span class="service-price-tag">от 1 800 ₽</span>
-                <button class="btn btn-primary service-book-btn" onclick="selectProcedure('Уход для жирной кожи с розацеа')">Записаться</button>
               </div>
             </div>
           </article>
 
           <!-- 5: Биолифтинг -->
-          <article class="service-item" data-category="face">
+          <article class="service-item reveal-item" data-category="face">
             <div class="service-thumb">
               <span class="badge-pill peach service-category-badge">Лицо</span>
               <img src="img/s5-1.jpg" alt="Процедура биолифтинга" loading="lazy">
@@ -2047,14 +1968,14 @@
               <h3 class="service-name">Биолифтинг и ремоделирование овала</h3>
               <p class="service-description">Интенсивное восстановление тонуса, упругости коллагенового каркаса и лифтинг контуров лица.</p>
               <div class="service-footer">
+                <span class="service-price-label">Стоимость</span>
                 <span class="service-price-tag">от 2 800 ₽</span>
-                <button class="btn btn-primary service-book-btn" onclick="selectProcedure('Биолифтинг')">Записаться</button>
               </div>
             </div>
           </article>
 
           <!-- 6: Век чувствительный -->
-          <article class="service-item" data-category="eyes">
+          <article class="service-item reveal-item" data-category="eyes">
             <div class="service-thumb">
               <span class="badge-pill mint service-category-badge">Кожа век</span>
               <img src="img/s7-1.jpg" alt="Уход за чувствительной кожей век" loading="lazy">
@@ -2063,14 +1984,14 @@
               <h3 class="service-name">Уход за чувствительной кожей век</h3>
               <p class="service-description">Увлажнение тонкой периорбитальной зоны, разглаживание мелких мимических морщинок обезвоженности.</p>
               <div class="service-footer">
+                <span class="service-price-label">Стоимость</span>
                 <span class="service-price-tag">от 600 ₽</span>
-                <button class="btn btn-primary service-book-btn" onclick="selectProcedure('Уход за чувствительной кожей век')">Записаться</button>
               </div>
             </div>
           </article>
 
           <!-- 7: Век жирный -->
-          <article class="service-item" data-category="eyes">
+          <article class="service-item reveal-item" data-category="eyes">
             <div class="service-thumb">
               <span class="badge-pill mint service-category-badge">Кожа век</span>
               <img src="img/s8-1.jpg" alt="Уход за жирной кожей век" loading="lazy">
@@ -2079,14 +2000,14 @@
               <h3 class="service-name">Уход за жирной кожей век и себорегуляция</h3>
               <p class="service-description">Нормализация состояния кожи век с выраженным блеском, склонностью к милиумам и раздражениям.</p>
               <div class="service-footer">
+                <span class="service-price-label">Стоимость</span>
                 <span class="service-price-tag">от 800 ₽</span>
-                <button class="btn btn-primary service-book-btn" onclick="selectProcedure('Уход за жирной кожей век')">Записаться</button>
               </div>
             </div>
           </article>
 
           <!-- 8: Век от отеков -->
-          <article class="service-item" data-category="eyes">
+          <article class="service-item reveal-item" data-category="eyes">
             <div class="service-thumb">
               <span class="badge-pill mint service-category-badge">Кожа век</span>
               <img src="img/assets/stock/treatment.jpg" alt="Лимфодренажный уход за кожей век от отёков" loading="lazy">
@@ -2095,14 +2016,14 @@
               <h3 class="service-name">Лимфодренажный уход за кожей век от отёков</h3>
               <p class="service-description">Активация микроциркуляции, снятие пастозности и утренней припухлости под глазами.</p>
               <div class="service-footer">
+                <span class="service-price-label">Стоимость</span>
                 <span class="service-price-tag">от 1 200 ₽</span>
-                <button class="btn btn-primary service-book-btn" onclick="selectProcedure('Лимфодренажный уход за веками')">Записаться</button>
               </div>
             </div>
           </article>
 
           <!-- 9: Пигментация -->
-          <article class="service-item" data-category="pigment">
+          <article class="service-item reveal-item" data-category="pigment">
             <div class="service-thumb">
               <span class="badge-pill warm service-category-badge">Осветление</span>
               <img src="img/26.jpg" alt="Отбеливающие программы для кожи с пигментацией" loading="lazy">
@@ -2111,14 +2032,14 @@
               <h3 class="service-name">Отбеливающие медицинские программы</h3>
               <p class="service-description">Блокировка синтеза избыточного меланина, выравнивание тона при постакне, хлоазме и фотостарении.</p>
               <div class="service-footer">
+                <span class="service-price-label">Стоимость</span>
                 <span class="service-price-tag">от 2 500 ₽</span>
-                <button class="btn btn-primary service-book-btn" onclick="selectProcedure('Отбеливающие программы')">Записаться</button>
               </div>
             </div>
           </article>
 
           <!-- 10: Чистка лица -->
-          <article class="service-item" data-category="clean">
+          <article class="service-item reveal-item" data-category="clean">
             <div class="service-thumb">
               <span class="badge-pill peach service-category-badge">Чистка</span>
               <img src="img/sa1.jpg" alt="Мануальная и комбинированная чистка лица" loading="lazy">
@@ -2127,14 +2048,14 @@
               <h3 class="service-name">Мануальная и комбинированная чистка лица</h3>
               <p class="service-description">Атравматичное размягчение сальных пробок с бережной экстракцией комедонов и поросуживающей маской.</p>
               <div class="service-footer">
+                <span class="service-price-label">Стоимость</span>
                 <span class="service-price-tag">от 900 ₽</span>
-                <button class="btn btn-primary service-book-btn" onclick="selectProcedure('Чистка лица')">Записаться</button>
               </div>
             </div>
           </article>
 
           <!-- 11: Пилинги для век -->
-          <article class="service-item" data-category="peel">
+          <article class="service-item reveal-item" data-category="peel">
             <div class="service-thumb">
               <span class="badge-pill mint service-category-badge">Пилинг</span>
               <img src="img/sa2.jpg" alt="Предпилинговый уход и пилинги для век" loading="lazy">
@@ -2143,14 +2064,14 @@
               <h3 class="service-name">Предпилинговый уход и пилинги для области век</h3>
               <p class="service-description">Специализированные мягкие AHA/BHA кислоты, безопасные для тончайшей периорбитальной зоны.</p>
               <div class="service-footer">
+                <span class="service-price-label">Стоимость</span>
                 <span class="service-price-tag">от 300 ₽</span>
-                <button class="btn btn-primary service-book-btn" onclick="selectProcedure('Пилинги для области век')">Записаться</button>
               </div>
             </div>
           </article>
 
           <!-- 12: Комплексные пилинги -->
-          <article class="service-item" data-category="peel">
+          <article class="service-item reveal-item" data-category="peel">
             <div class="service-thumb">
               <span class="badge-pill mint service-category-badge">Пилинг</span>
               <img src="img/sa3.jpg" alt="Всесезонные обновляющие пилинги" loading="lazy">
@@ -2159,8 +2080,8 @@
               <h3 class="service-name">Всесезонные обновляющие пилинги</h3>
               <p class="service-description">Миндальный, феруловый, молочный и азелаиновый пилинги без шелушения и фотосенсибилизации.</p>
               <div class="service-footer">
+                <span class="service-price-label">Стоимость</span>
                 <span class="service-price-tag">от 1 800 ₽</span>
-                <button class="btn btn-primary service-book-btn" onclick="selectProcedure('Всесезонные пилинги')">Записаться</button>
               </div>
             </div>
           </article>
@@ -2174,7 +2095,7 @@
          ======================================================================== -->
     <section class="section-wrap" id="certificates" style="padding-top: 0; padding-bottom: 0;">
       <div class="container">
-        <div class="contrast-statement" style="background: linear-gradient(135deg, #132A22 0%, #1A392F 100%);">
+        <div class="contrast-statement reveal-item" style="background: linear-gradient(135deg, #132A22 0%, #1A392F 100%);">
           <div class="contrast-content">
             <span class="badge-pill light">Подарочные сертификаты</span>
             <h2 class="contrast-title">Подарите заботу, красоту и сияние</h2>
@@ -2206,9 +2127,9 @@
             </ul>
 
             <div style="margin-top: 8px;">
-              <button class="btn btn-light" onclick="selectProcedure('Подарочный сертификат')">
-                Оформить сертификат
-              </button>
+              <a href="https://wa.me/79374524352?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A0%D0%B0%D1%81%D1%81%D0%BA%D0%B0%D0%B6%D0%B8%D1%82%D0%B5%2C%20%D0%BF%D0%BE%D0%B6%D0%B0%D0%BB%D1%83%D0%B9%D1%81%D1%82%D0%B0%2C%20%D0%BF%D0%BE%D0%B4%D1%80%D0%BE%D0%B1%D0%BD%D0%B5%D0%B5%20%D0%BF%D1%80%D0%BE%20%D0%BF%D0%BE%D0%B4%D0%B0%D1%80%D0%BE%D1%87%D0%BD%D1%8B%D0%B5%20%D1%81%D0%B5%D1%80%D1%82%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%82%D1%8B" target="_blank" rel="noopener noreferrer" class="btn btn-light">
+                Узнать о сертификатах в WhatsApp
+              </a>
             </div>
           </div>
 
@@ -2224,204 +2145,502 @@
          ======================================================================== -->
     <section class="section-wrap" id="prices">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header reveal-item">
           <span class="badge-pill warm">Прайс-лист</span>
           <h2 class="section-title">Честная стоимость без скрытых доплат</h2>
-          <p class="section-desc">В цену всех процедур включены профессиональные расходные материалы, ампульные сыворотки и успокаивающие маски.</p>
+          <p class="section-desc">В цену всех процедур включены профессиональные расходные материалы, сертифицированная космецевтика и индивидуальный подход.</p>
         </div>
 
-        <div class="pricing-card">
+        <div class="pricing-card reveal-item">
           <!-- Price Tabs -->
           <div class="pricing-tabs">
-            <button class="tab-nav-btn active" data-tab="tab-face">Уход за лицом</button>
-            <button class="tab-nav-btn" data-tab="tab-eyes">Зона вокруг глаз</button>
-            <button class="tab-nav-btn" data-tab="tab-clean">Чистки и пилинги</button>
-            <button class="tab-nav-btn" data-tab="tab-complex">Комплексные программы</button>
+            <button class="tab-nav-btn active" data-tab="tab-programs">Комплексные программы</button>
+            <button class="tab-nav-btn" data-tab="tab-peel">Пилинги</button>
+            <button class="tab-nav-btn" data-tab="tab-clean">Чистки и зона век</button>
+            <button class="tab-nav-btn" data-tab="tab-masks">Маски и сыворотки</button>
+            <button class="tab-nav-btn" data-tab="tab-brows">Консультация и брови</button>
           </div>
 
-          <!-- Group 1: Лицо -->
-          <div class="price-table-group active" id="tab-face">
-            <table class="custom-table" aria-label="Цены на уход за лицом">
+          <!-- Tab 1: Комплексные программы -->
+          <div class="price-table-group active" id="tab-programs">
+            <table class="custom-table" aria-label="Цены на комплексные программы">
               <thead>
                 <tr>
-                  <th>Процедура</th>
-                  <th style="text-align: right;">Стоимость</th>
-                  <th style="text-align: right;">Запись</th>
+                  <th>Процедура и описание</th>
+                  <th style="text-align: right; width: 140px;">Стоимость</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td class="td-name">
+                    <strong>Шелковый лифтинг Silk</strong>
+                    <span>Использование средств программы позволяет добиться стойкого результата в омоложении кожи. «Фишка» Silk — волокна тутового шелкопряда в составе продуктов, восстанавливающие поврежденную структуру коллагена, удерживающие влагу и стимулирующие микроциркуляцию. Заметный лифтинг, разглаживание морщин, нормализация работы сальных желез.</span>
+                  </td>
+                  <td class="td-price">5 000 ₽<span class="price-sub">*руки +1 500 ₽</span></td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Программа «Young skin»</strong>
+                    <span>Включает в себя очищение, всесезонный пилинг, комплексную чистку (ультразвуковая чистка + мануальная), маску и уходовые средства по типу кожи.</span>
+                  </td>
+                  <td class="td-price">2 500 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Программа «Постакне»</strong>
+                    <span>Заключается в осветлении застойных пятен при помощи пилинга, программы микротоковой терапии и индивидуальных уходовых средств по типу кожи.</span>
+                  </td>
+                  <td class="td-price">от 2 500 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Программа «Проблемная кожа»</strong>
+                    <span>Снятие гиперемии и уменьшение количества воспалительных элементов воздействием пилинга, микротоковой терапии. Фонофорез средств для кожи с акне, завершение нанесением маски и уходовых средств по типу кожи.</span>
+                  </td>
+                  <td class="td-price">от 2 500 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Программа «Пробуждение» для кожи с розацеа</strong>
+                    <span>Бережное очищение кожи, салициловый пептидный пилинг, микротоковая терапия, успокаивающая сыворотка и маска.</span>
+                  </td>
+                  <td class="td-price">от 2 500 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
                     <strong>Атравматичный очищающий уход для сухой, атоничной кожи с куперозом</strong>
-                    <span>Мягкий деликатный уход с сосудоукрепляющими концентратами</span>
+                    <span>Мягкий деликатный уход с сосудоукрепляющими концентратами, устранение чувства стянутости и восстановление гидролипидного барьера.</span>
                   </td>
                   <td class="td-price">от 2 600 ₽</td>
-                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Уход для сухой кожи с куперозом')">Выбрать</button></td>
                 </tr>
                 <tr>
                   <td class="td-name">
                     <strong>Атравматичный очищающий уход для жирной кожи</strong>
-                    <span>Растворение комедонов, себорегуляция и сужение пор</span>
+                    <span>Растворение комедонов, себорегуляция и сужение пор без пересушивания эпидермиса.</span>
                   </td>
                   <td class="td-price">от 1 800 ₽</td>
-                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Уход для жирной кожи')">Выбрать</button></td>
                 </tr>
                 <tr>
                   <td class="td-name">
-                    <strong>Атравматичный очищающий уход для сухой кожи с розацеа</strong>
-                    <span>Снятие красноты, терапия гиперчувствительности</span>
+                    <strong>Атравматичный уход для сухой кожи с розацеа</strong>
+                    <span>Снятие красноты, эритемы, терапия гиперчувствительности и успокаивающий эффект.</span>
                   </td>
                   <td class="td-price">от 1 600 ₽</td>
-                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Уход для сухой кожи с розацеа')">Выбрать</button></td>
                 </tr>
                 <tr>
                   <td class="td-name">
-                    <strong>Атравматичный очищающий уход для жирной кожи с розацеа</strong>
-                    <span>Балансирующий уход при повышенной чувствительности</span>
+                    <strong>Атравматичный уход для жирной кожи с розацеа</strong>
+                    <span>Балансирующий уход при повышенной реактивности, себорее и сопутствующих сосудистых реакциях.</span>
                   </td>
                   <td class="td-price">от 1 800 ₽</td>
-                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Уход для жирной кожи с розацеа')">Выбрать</button></td>
                 </tr>
                 <tr>
                   <td class="td-name">
-                    <strong>Биолифтинг и моделирование контура лица</strong>
-                    <span>Антивозрастная реструктурирующая терапия</span>
+                    <strong>Биолифтинг и ремоделирование контура лица</strong>
+                    <span>Антивозрастная реструктурирующая терапия для тонуса, упругости мышц и моделирования четкого овала лица.</span>
                   </td>
                   <td class="td-price">от 2 800 ₽</td>
-                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Биолифтинг лица')">Выбрать</button></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <!-- Group 2: Век -->
-          <div class="price-table-group" id="tab-eyes">
-            <table class="custom-table" aria-label="Цены на уход за кожей век">
-              <thead>
-                <tr>
-                  <th>Процедура</th>
-                  <th style="text-align: right;">Стоимость</th>
-                  <th style="text-align: right;">Запись</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="td-name">
-                    <strong>Уход за чувствительной кожей век</strong>
-                    <span>Снятие сухости, укрепление тонкой кожи вокруг глаз</span>
-                  </td>
-                  <td class="td-price">от 600 ₽</td>
-                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Уход за чувствительной кожей век')">Выбрать</button></td>
-                </tr>
-                <tr>
-                  <td class="td-name">
-                    <strong>Уход за жирной кожей век</strong>
-                    <span>Бережное очищение пор и себорегуляция</span>
-                  </td>
-                  <td class="td-price">от 800 ₽</td>
-                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Уход за жирной кожей век')">Выбрать</button></td>
-                </tr>
-                <tr>
-                  <td class="td-name">
-                    <strong>Уход за кожей век, склонной к отекам</strong>
-                    <span>Дренажный микромассаж и лимфодренажные патч-маски</span>
-                  </td>
-                  <td class="td-price">от 1 200 ₽</td>
-                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Уход за веками от отеков')">Выбрать</button></td>
-                </tr>
-                <tr>
-                  <td class="td-name">
-                    <strong>Пилинги периорбитальной зоны</strong>
-                    <span>Специальный ультрамягкий состав против гусиных лапок</span>
-                  </td>
-                  <td class="td-price">от 800 ₽</td>
-                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Пилинги периорбитальной зоны')">Выбрать</button></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <!-- Group 3: Чистки и пилинги -->
-          <div class="price-table-group" id="tab-clean">
-            <table class="custom-table" aria-label="Цены на чистки и пилинги">
-              <thead>
-                <tr>
-                  <th>Процедура</th>
-                  <th style="text-align: right;">Стоимость</th>
-                  <th style="text-align: right;">Запись</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="td-name">
-                    <strong>Мануальная чистка: Т-зона</strong>
-                    <span>Локальная проработка носа, подбородка и лба</span>
-                  </td>
-                  <td class="td-price">от 900 ₽</td>
-                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Мануальная чистка: Т-зона')">Выбрать</button></td>
-                </tr>
-                <tr>
-                  <td class="td-name">
-                    <strong>Комплексная чистка лица (лицо + шея)</strong>
-                    <span>Двухэтапная ультразвуковая + механическая чистка с сывороткой</span>
-                  </td>
-                  <td class="td-price">от 1 500 ₽</td>
-                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Чистка лица и шеи')">Выбрать</button></td>
-                </tr>
-                <tr>
-                  <td class="td-name">
-                    <strong>Чистка спины</strong>
-                    <span>Терапевтическое очищение при воспалениях</span>
-                  </td>
-                  <td class="td-price">от 1 200 ₽</td>
-                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Чистка спины')">Выбрать</button></td>
-                </tr>
-                <tr>
-                  <td class="td-name">
-                    <strong>Всесезонные поверхностные пилинги</strong>
-                    <span>Миндальный, феруловый, молочный, азелаиновый</span>
-                  </td>
-                  <td class="td-price">от 1 800 ₽</td>
-                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Всесезонный пилинг')">Выбрать</button></td>
                 </tr>
                 <tr>
                   <td class="td-name">
                     <strong>Отбеливающая депигментирующая программа</strong>
-                    <span>Осветление гиперпигментации, коррекция постакне пятен</span>
+                    <span>Осветление поствоспалительной и возрастной гиперпигментации, коррекция постакне пятен, выравнивание тона и природное сияние.</span>
                   </td>
                   <td class="td-price">от 2 500 ₽</td>
-                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Отбеливающая программа')">Выбрать</button></td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <!-- Group 4: Комплексные -->
-          <div class="price-table-group" id="tab-complex">
-            <table class="custom-table" aria-label="Цены на комплексные программы">
+          <!-- Tab 2: Всесезонные и сезонные пилинги -->
+          <div class="price-table-group" id="tab-peel">
+            <table class="custom-table" aria-label="Цены на всесезонные и сезонные пилинги">
               <thead>
                 <tr>
-                  <th>Процедура</th>
-                  <th style="text-align: right;">Стоимость</th>
-                  <th style="text-align: right;">Запись</th>
+                  <th>Процедура и описание</th>
+                  <th style="text-align: right; width: 140px;">Стоимость</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-subheading-row">
+                  <td colspan="2" style="background: var(--bg-warm); font-weight: 700; color: var(--ink-dark); font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; padding: 10px 18px;">
+                    Всесезонные пилинги
+                  </td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Пилинг MCA Renew</strong>
+                    <span>Всесезонный пилинг реструктуризации и омоложения кожи, эффективно борется с морщинами, пигментными пятнами и другими признаками старения.</span>
+                  </td>
+                  <td class="td-price">от 1 500 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Пилинг PeelArm FORCE</strong>
+                    <span>Всесезонный пилинг для осветления кожи, регенерации, выравнивания рельефа и тона кожи, разглаживания морщин, устранения гиперпигментации и дисколорации.</span>
+                  </td>
+                  <td class="td-price">от 1 500 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Пилинг Aqua</strong>
+                    <span>Осветляющий всесезонный пилинг: способствует уменьшению признаков фотостарения, кератоза, атонии кожи, увлажняет, выравнивает тон и улучшает тургор.</span>
+                  </td>
+                  <td class="td-price">от 1 500 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Пилинг Ros Acne Pure Skin</strong>
+                    <span>Наносомальный пилинг: останавливает проявления акне, оказывает мощное противовоспалительное и сосудоукрепляющее действие.</span>
+                  </td>
+                  <td class="td-price">от 1 500 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Пилинг AminoV+</strong>
+                    <span>Пилинг с биоревитализирующим действием, направленным на восстановление иммунитета кожи, значительно увлажняет, осветляет и уменьшает проявления постакне.</span>
+                  </td>
+                  <td class="td-price">от 1 500 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Миндальный пилинг</strong>
+                    <span>Предназначен для выравнивания микрорельефа кожи, профилактики и коррекции увядания кожи, устранения гиперпигментации, себореи и угревой сыпи.</span>
+                  </td>
+                  <td class="td-price">от 1 500 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Азелаиновый пилинг</strong>
+                    <span>Пилинг широкого спектра действия: эффективная борьба с гиперпигментацией, постакне, куперозом и розацеа.</span>
+                  </td>
+                  <td class="td-price">от 1 500 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Азелаиновый «умный» пилинг</strong>
+                    <span>Бережно отшелушивает, борется с гиперпигментацией и признаками старения, снимает воспаления, матирует и осветляет кожу, нормализует работу сальных желез.</span>
+                  </td>
+                  <td class="td-price">от 1 500 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Феруловый пилинг с витамином C</strong>
+                    <span>Создаёт мощнейшую антиоксидантную защиту, противовоспалительный и регенерирующий эффекты, мгновенное осветление гиперпигментации.</span>
+                  </td>
+                  <td class="td-price">от 1 500 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Пробиотический пилинг</strong>
+                    <span>Оказывает глубокое увлажнение, лифтинг-эффект, создаёт идеальный рельеф кожи, сужает поры, обладает выраженным противовоспалительным действием.</span>
+                  </td>
+                  <td class="td-price">от 1 500 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Салициловый пептидный пилинг</strong>
+                    <span>Уменьшает количество воспалительных элементов и комедонов, сужает поры и улучшает рельеф кожи, борется с рубцами постакне и застойными явлениями.</span>
+                  </td>
+                  <td class="td-price">от 1 500 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Ретиноловый пилинг гранд</strong>
+                    <span>Стимулирует выработку коллагена и эластина, снижает гиперпигментацию, способствует обновлению кожи, выравнивая её текстуру и улучшая тургор.</span>
+                  </td>
+                  <td class="td-price">от 1 500 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Мультипилинг</strong>
+                    <span>Оказывает противовоспалительное, антибактериальное, осветляющее действие, предотвращает образование комедонов и гнойничковых воспалений.</span>
+                  </td>
+                  <td class="td-price">от 1 500 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Пилинг-гоммаж с витамином E</strong>
+                    <span>Мягко и эффективно очищает, способствует легкому отшелушиванию ороговевших клеток и разглаживанию микрорельефа кожи.</span>
+                  </td>
+                  <td class="td-price">от 800 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Пилинги периорбитальной зоны</strong>
+                    <span>Специальный деликатный состав для тонкой кожи вокруг глаз: устранение сетки морщин и уплотнение кожи век.</span>
+                  </td>
+                  <td class="td-price">от 800 ₽</td>
+                </tr>
+                <tr class="table-subheading-row">
+                  <td colspan="2" style="background: var(--bg-warm); font-weight: 700; color: var(--ink-dark); font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; padding: 10px 18px;">
+                    Сезонные пилинги
+                  </td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Пилинг Джесснера</strong>
+                    <span>Вызывает пролонгированное сияние кожи и лифтинг-эффект, борется с признаками фото- и хроностарения, гиперкератоза и акне.</span>
+                  </td>
+                  <td class="td-price">3 000 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Пилинг с тремя видами кислот</strong>
+                    <span>Сезонный пилинг с выраженным кератолитическим эффектом, высокое антисептическое и антибактериальное действие, выраженный анти-акне эффект.</span>
+                  </td>
+                  <td class="td-price">2 500 ₽</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Tab 3: Чистки и зона век -->
+          <div class="price-table-group" id="tab-clean">
+            <table class="custom-table" aria-label="Цены на чистки лица и уход за веками">
+              <thead>
+                <tr>
+                  <th>Процедура и описание</th>
+                  <th style="text-align: right; width: 140px;">Стоимость</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-subheading-row">
+                  <td colspan="2" style="background: var(--bg-warm); font-weight: 700; color: var(--ink-dark); font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; padding: 10px 18px;">
+                    Чистки лица и тела
+                  </td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Мануальная чистка: Т-зона</strong>
+                    <span>Локальная глубокая атравматичная проработка носа, подбородка и центральной зоны лба.</span>
+                  </td>
+                  <td class="td-price">от 900 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Комплексная чистка лица (лицо + шея)</strong>
+                    <span>Двухэтапная ультразвуковая + механическая чистка, дезинкрустация, сыворотка и успокаивающая поросуживающая маска.</span>
+                  </td>
+                  <td class="td-price">от 1 500 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Чистка спины</strong>
+                    <span>Глубокое терапевтическое очищение кожи спины при гиперсекреции сальных желез и воспалениях.</span>
+                  </td>
+                  <td class="td-price">от 1 200 ₽</td>
+                </tr>
+                <tr class="table-subheading-row">
+                  <td colspan="2" style="background: var(--bg-warm); font-weight: 700; color: var(--ink-dark); font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; padding: 10px 18px;">
+                    Уход за кожей век
+                  </td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Уход за чувствительной кожей век</strong>
+                    <span>Снятие сухости, увлажнение тонкой периорбитальной зоны, разглаживание мелких мимических морщинок обезвоженности.</span>
+                  </td>
+                  <td class="td-price">от 600 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Уход за жирной кожей век и себорегуляция</strong>
+                    <span>Бережное очищение пор, нормализация состояния кожи век с выраженным блеском, склонностью к милиумам и раздражениям.</span>
+                  </td>
+                  <td class="td-price">от 800 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Уход за кожей век, склонной к отекам</strong>
+                    <span>Активация микроциркуляции, снятие пастозности и утренней припухлости под глазами, мягкий лимфодренаж.</span>
+                  </td>
+                  <td class="td-price">от 1 200 ₽</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Tab 4: Маски и сыворотки -->
+          <div class="price-table-group" id="tab-masks">
+            <table class="custom-table" aria-label="Цены на маски и сыворотки">
+              <thead>
+                <tr>
+                  <th>Процедура и описание</th>
+                  <th style="text-align: right; width: 140px;">Стоимость</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-subheading-row">
+                  <td colspan="2" style="background: var(--bg-warm); font-weight: 700; color: var(--ink-dark); font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; padding: 10px 18px;">
+                    Профессиональные маски
+                  </td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Маска идеальное сияние</strong>
+                    <span>Интенсивно питательная, ревитализирующая крем-маска с осветляющим эффектом для мгновенной бьютификации кожи.</span>
+                  </td>
+                  <td class="td-price">от 400 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Поросуживающая себорегулирующая маска Comodex</strong>
+                    <span>Оказывает выраженный поросуживающий эффект, снимает раздражение, устраняет гиперемию, абсорбирует избыточный секрет сальных желез, обладает кератолитическим, антисептическим действием.</span>
+                  </td>
+                  <td class="td-price">от 400 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Грязевая маска GiGi</strong>
+                    <span>Обладает рассасывающим, противовоспалительным и обезболивающим действием. Заживляет раны, абсорбирует кожный жир, оказывает антисептическое, иммуномодулирующее действие.</span>
+                  </td>
+                  <td class="td-price">от 400 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Маска для жирной и проблемной кожи</strong>
+                    <span>Нормализация гидролипидной мантии, снижение сальности, антибактериальная защита и сужение пор.</span>
+                  </td>
+                  <td class="td-price">от 400 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Маска-гель для проблемной кожи</strong>
+                    <span>Снижает выработку кожного сала, «подсушивает» воспалительные элементы, нормализует процесс кератинизации, снижает рост бактерий, очищает и сужает поры, успокаивает кожу, способствует заживлению, снимает покраснение.</span>
+                  </td>
+                  <td class="td-price">от 400 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>ГидроАлоэ Гель Успокаивающий</strong>
+                    <span>Снимает ощущение раздражения, сухости, стянутости. Повышает содержание влаги в роговом слое кожи, способствует регенерации и восстановлению ее барьерной функции.</span>
+                  </td>
+                  <td class="td-price">от 400 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Альгинатная маска с витамином C</strong>
+                    <span>Увлажняет и подтягивает кожу, осветляет пигментные пятна, стимулирует синтез коллагена. Придает коже здоровый цвет и сияние.</span>
+                  </td>
+                  <td class="td-price">600 ₽ <span class="price-sub">лицо / 800 ₽ лицо+шея / 1 200 ₽ декольте</span></td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Альгинатная маска для глаз и губ</strong>
+                    <span>Укрепляет нежную область губ и глаз, разглаживает и уменьшает видимые мимические морщины, морщины-марионетки в периорбитальной зоне, снимает отечность с глаз и области губ, осветляет темные круги, уменьшает усталость глаз. Значительно освежает нежную область вокруг глаз и губ.</span>
+                  </td>
+                  <td class="td-price">400 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Гипсовая маска</strong>
+                    <span>Позволяет смоделировать каркас лица, подтянуть овал, скорректировать мимические морщины. Оказывает выраженный лимфодренажный эффект, устраняет отёки, ускоряет процессы регенерации, замедляет процессы старения, улучшает цвет и тон кожи.</span>
+                  </td>
+                  <td class="td-price">650 ₽ <span class="price-sub">+600 ₽ с успокаивающим препаратом</span></td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Маска антистресс</strong>
+                    <span>Подходит для чувствительной и поврежденной кожи. Успокаивающая маска с ламинарией для постпилингового ухода. Успокаивает раздраженную и воспаленную кожу, восполняет структуру эпидермиса, уменьшает отеки, снимает гиперемию, питает и смягчает поврежденную кожу.</span>
+                  </td>
+                  <td class="td-price">от 400 ₽</td>
+                </tr>
+                <tr class="table-subheading-row">
+                  <td colspan="2" style="background: var(--bg-warm); font-weight: 700; color: var(--ink-dark); font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; padding: 10px 18px;">
+                    Сыворотки (активные концентраты к процедурам)
+                  </td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Лимфодренажная сыворотка</strong>
+                    <span>Укрепляет сосуды кожи, уменьшает отёки и пастозность, увлажняет и скрывает мелкие морщинки.</span>
+                  </td>
+                  <td class="td-price">от 300 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Антивозрастная сыворотка с ДМАЭ</strong>
+                    <span>Сокращает морщины, борется с гиперпигментацией, восстанавливает упругость, делая кожу более плотной.</span>
+                  </td>
+                  <td class="td-price">от 300 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Сыворотка анти-акне</strong>
+                    <span>Оказывает противовоспалительное и антимикробное действие, нормализует выработку себума.</span>
+                  </td>
+                  <td class="td-price">от 300 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Сыворотка с витамином C</strong>
+                    <span>Выравнивает тон кожи, делает ее гладкой и сияющей.</span>
+                  </td>
+                  <td class="td-price">от 300 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Сыворотка для кожи вокруг глаз</strong>
+                    <span>Снимает следы отёчности, устраняет темные круги под глазами, разглаживает мелкие морщинки.</span>
+                  </td>
+                  <td class="td-price">от 300 ₽</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Tab 5: Консультация, брови и ресницы -->
+          <div class="price-table-group" id="tab-brows">
+            <table class="custom-table" aria-label="Цены на консультацию косметолога и оформление взгляда">
+              <thead>
+                <tr>
+                  <th>Процедура и описание</th>
+                  <th style="text-align: right; width: 140px;">Стоимость</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td class="td-name">
-                    <strong>Программа «Сияние невесты» (экспресс-выход)</strong>
-                    <span>Чистка + лифтинг-массаж + альгинатная маска перед мероприятием</span>
+                    <strong>Первичный прием косметолога</strong>
+                    <span>Диагностика типа и состояния кожи, сбор анамнеза, составление персонального плана ухода. *В рамках проведения процедуры или при покупке косметических средств на сумму от 3 000 рублей консультация бесплатна.</span>
                   </td>
-                  <td class="td-price">3 500 ₽</td>
-                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Программа Экспресс-выход')">Выбрать</button></td>
+                  <td class="td-price">1 500 ₽<span class="price-sub">*или бесплатно</span></td>
                 </tr>
                 <tr>
                   <td class="td-name">
-                    <strong>Курс восстановления кожного барьера (3 сеанса)</strong>
-                    <span>Комплексная терапия розацеа и дегидратации</span>
+                    <strong>Подбор мини-версий косметических средств</strong>
+                    <span>Персональный подбор домашнего ухода с комплектом пробных и мини-форматов профессиональных средств по типу кожи.</span>
                   </td>
-                  <td class="td-price">6 900 ₽</td>
-                  <td class="td-action"><button class="btn btn-primary table-book-btn" onclick="selectProcedure('Курс восстановления 3 сеанса')">Выбрать</button></td>
+                  <td class="td-price">от 2 500 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Коррекция бровей пинцетом</strong>
+                    <span>Бережное моделирование чистой анатомической формы бровей с учетом пропорций вашего лица.</span>
+                  </td>
+                  <td class="td-price">400 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Окрашивание бровей</strong>
+                    <span>Стойкое мягкое окрашивание профессиональным красителем, гармонично подчеркивающее естественный образ.</span>
+                  </td>
+                  <td class="td-price">500 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Окрашивание ресниц</strong>
+                    <span>Насыщенный цвет ресниц от корней до кончиков для выразительного и свежего взгляда без туши.</span>
+                  </td>
+                  <td class="td-price">600 ₽</td>
+                </tr>
+                <tr>
+                  <td class="td-name">
+                    <strong>Полное оформление бровей + окрашивание ресниц</strong>
+                    <span>Комплексное моделирование: коррекция формы бровей пинцетом, стойкое окрашивание бровей и ресниц.</span>
+                  </td>
+                  <td class="td-price">1 200 ₽</td>
                 </tr>
               </tbody>
             </table>
@@ -2436,13 +2655,13 @@
          ======================================================================== -->
     <section class="section-wrap" id="doctor" style="padding-top: 0;">
       <div class="container">
-        <div class="specialist-card">
+        <div class="specialist-card reveal-item">
           <div class="specialist-photo-frame">
             <img src="img/galina.jpg" alt="Врач-косметолог кабинета Облака" loading="lazy">
           </div>
 
           <div class="specialist-info" >
-            <span class="badge-pill mint" style="">Врачебная эстетика с заботой о вас</span>
+            <span class="badge-pill mint">Врачебная эстетика с заботой о вас</span>
             <h2 class="specialist-name">Галина Игнатьева - <br> ведущий специалист</h2>
             <p class="specialist-creds">Врач-дерматовенеролог, косметолог · Стаж клинической практики более 12 лет</p>
             
@@ -2461,9 +2680,7 @@
               </div>
             </div>
 
-            <div style="margin-top: 8px;">
-              <a href="#booking" class="btn btn-primary">Записаться на консультацию к врачу</a>
-            </div>
+
           </div>
         </div>
       </div>
@@ -2474,7 +2691,7 @@
          ======================================================================== -->
     <section class="section-wrap" id="cosmetics" style="padding-top: 0;">
       <div class="container">
-        <div class="brands-section-card">
+        <div class="brands-section-card reveal-item">
           <div class="section-header text-left" style="margin-bottom: 28px;">
             <span class="badge-pill warm">Дерматокосмецевтика</span>
             <h2 class="section-title">Работаем исключительно на оригинальных препаратах</h2>
@@ -2512,7 +2729,7 @@
          ======================================================================== -->
     <section class="section-wrap" id="certs" style="padding-top: 0;">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header reveal-item">
           <span class="badge-pill mint">Медицинская безопасность</span>
           <h2 class="section-title">Сертифицированное оснащение кабинета</h2>
           <p class="section-desc">Ваша безопасность — наш строгий приоритет: стерильность, контроль сроков годности и официальная лицензия.</p>
@@ -2547,7 +2764,7 @@
          ======================================================================== -->
     <section class="section-wrap" id="reviews" style="padding-top: 0;">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header reveal-item">
           <span class="badge-pill peach">Истории преображения</span>
           <h2 class="section-title">Что говорят наши пациенты</h2>
           <p class="section-desc">Более 1 200 довольных пациентов доверяют свою кожу специалистам кабинета «Облака».</p>
@@ -2555,42 +2772,45 @@
 
         <div class="reviews-grid">
           <!-- Review 1 (Peach) -->
-          <div class="review-card peach">
+          <div class="review-card reveal-item peach">
             <p class="review-text">
-              «У меня очень тонкая кожа с куперозом на щеках. В других салонах после чистки я неделю ходила красная. В «Облаках» доктор подобрала атравматичный протокол — лицо чистое, сияет, и ни одного пятнышка! Теперь только сюда».
+              «Галина-отличный специалист. Видно, что профессионал своего дела. Очень нравится, что всё доступно объясняет, понятно отвечает на всё интересующие вопросы».
             </p>
             <div class="review-author">
               <div class="author-avatar">ЕВ</div>
               <div class="author-details">
-                <strong>Елена Васильева</strong>
+                <strong>Елена</strong>
                 <span>Атравматичный уход при куперозе</span>
               </div>
             </div>
           </div>
 
           <!-- Review 2 (Dark Pine Contrast) -->
-          <div class="review-card dark">
+          <div class="review-card reveal-item dark">
             <p class="review-text">
-              «Пришла с обострением розацеа и сильным чувством стянутости. Мне не стали продавать двадцать баночек, а составили понятную программу из 3 процедур и скорректировали умывание. Кожа успокоилась уже после первого сеанса».
+              «Прекрасный салон с отличным месторасположением.
+                Всегда приятно зайти в чистый холл с заготовленными тапками и бахилами.
+                Галина, она же великий гуру косметологии, никогда не посоветует лишнего и делает все аккуратно и качественно. И дает отличные советы по уходу и общей медицине.
+                Салон рекомендую, Галину хвалю!!».
             </p>
             <div class="review-author">
               <div class="author-avatar" style="background-color: var(--bg-peach);">МА</div>
               <div class="author-details">
-                <strong style="color: #FFFFFF;">Мария Анохина</strong>
+                <strong style="color: #FFFFFF;">Наталья</strong>
                 <span>Курс терапии розацеа</span>
               </div>
             </div>
           </div>
 
           <!-- Review 3 (Mint) -->
-          <div class="review-card mint">
+          <div class="review-card reveal-item mint">
             <p class="review-text">
-              «Отличный кабинет! Очень чисто, уютно, играет спокойная музыка. Процедура биолифтинга очень приятная, а эффект виден сразу — овал подтянулся, морщинки у глаз сгладились. Чувствуется рука настоящего врача».
+              «Салон с очень приятным и грамотным коллективом. Приятная и расслабляющая обстановка. Косметолог Галина настоящий профессионал и чудесница.».
             </p>
             <div class="review-author">
               <div class="author-avatar">ОС</div>
               <div class="author-details">
-                <strong>Ольга Смирнова</strong>
+                <strong>Мария</strong>
                 <span>Биолифтинг и уход за веками</span>
               </div>
             </div>
@@ -2604,7 +2824,7 @@
          ======================================================================== -->
     <section class="section-wrap" id="faq" style="padding-top: 0;">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header reveal-item">
           <span class="badge-pill warm">Ответы на вопросы</span>
           <h2 class="section-title">Часто задаваемые вопросы</h2>
           <p class="section-desc">Всё, что важно знать перед посещением косметологического кабинета.</p>
@@ -2623,7 +2843,7 @@
           </div>
 
           <!-- Q2 -->
-          <div class="faq-item">
+          <div class="faq-item reveal-item">
             <button class="faq-question">
               <span>Как подготовиться к первому визиту?</span>
               <span class="faq-toggle-icon">+</span>
@@ -2634,7 +2854,7 @@
           </div>
 
           <!-- Q3 -->
-          <div class="faq-item">
+          <div class="faq-item reveal-item">
             <button class="faq-question">
               <span>Как подобрать подходящую процедуру, если я не знаю, что нужно коже?</span>
               <span class="faq-toggle-icon">+</span>
@@ -2645,7 +2865,7 @@
           </div>
 
           <!-- Q4 -->
-          <div class="faq-item">
+          <div class="faq-item reveal-item">
             <button class="faq-question">
               <span>Можно ли делать чистку и пилинги в летний период?</span>
               <span class="faq-toggle-icon">+</span>
@@ -2656,7 +2876,7 @@
           </div>
 
           <!-- Q5 -->
-          <div class="faq-item">
+          <div class="faq-item reveal-item">
             <button class="faq-question">
               <span>Какие способы оплаты вы принимаете?</span>
               <span class="faq-toggle-icon">+</span>
@@ -2668,190 +2888,100 @@
         </div>
       </div>
     </section>
-
-    <!-- ========================================================================
-         BOOKING & CONTACTS BENTO
-         ======================================================================== -->
-    <section class="section-wrap" id="contacts" style="padding-top: 0;">
-      <div class="container">
-        <div class="section-header" id="booking">
-          <span class="badge-pill peach">Запись на приём</span>
-          <h2 class="section-title">Онлайн-запись и контакты кабинета</h2>
-          <p class="section-desc">Оставьте заявку, и мы свяжемся с вами в течение 15 минут для подтверждения удобного времени визита.</p>
-        </div>
-
-        <div class="booking-bento">
-          <!-- Col 1: Contacts & Hours -->
-          <div class="booking-contacts-col">
-            <div>
-              <span class="badge-pill mint" style="margin-bottom: 14px;">Мы рядом</span>
-              <h3 style="font-size: 24px; margin-bottom: 8px;">Косметологический кабинет «Облака»</h3>
-              <p style="font-size: 15px; color: var(--ink-muted);">Уютный лицензированный кабинет с приятной атмосферой и парковкой.</p>
-            </div>
-
-            <div class="contact-block-item">
-              <div class="contact-block-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-              </div>
-              <div class="contact-block-text">
-                <strong>Адрес кабинета</strong>
-                <p>г. Тверь, ул. Лидии Базановой, д. 20</p>
-                <span style="font-size: 12.5px; color: var(--ink-muted);">Вход с торца здания, вывеска «Облака»</span>
-              </div>
-            </div>
-
-            <div class="contact-block-item">
-              <div class="contact-block-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              </div>
-              <div class="contact-block-text">
-                <strong>Телефон для записи</strong>
-                <p><a href="tel:+79201526458">+7 (920) 152-64-58</a></p>
-                <span style="font-size: 12.5px; color: var(--ink-muted);">Звонки, WhatsApp, Telegram</span>
-              </div>
-            </div>
-
-            <div class="contact-block-item">
-              <div class="contact-block-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              </div>
-              <div class="contact-block-text">
-                <strong>Режим работы</strong>
-                <p>Пн – Сб: 09:00 – 20:00</p>
-                <p>Вс: по предварительной записи</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Col 2: Interactive Form -->
-          <div class="booking-form-col">
-            <h3 style="font-size: 22px; color: var(--ink-dark);">Записаться на удобное время</h3>
-            <p style="font-size: 14.5px; color: var(--ink-muted);">Заполните форму, и мы подтвердим бронь в мессенджере или по звонку.</p>
-
-            <form id="appointment-form" onsubmit="handleFormSubmit(event)">
-              <div class="form-group">
-                <label for="client-name" class="form-label">Ваше имя *</label>
-                <input type="text" id="client-name" class="form-input" placeholder="Елена" required>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="client-phone" class="form-label">Номер телефона *</label>
-                  <input type="tel" id="client-phone" class="form-input" placeholder="+7 (___) ___-__-__" required>
-                </div>
-                <div class="form-group">
-                  <label for="client-date" class="form-label">Желаемая дата</label>
-                  <input type="date" id="client-date" class="form-input">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="client-procedure" class="form-label">Интересующая процедура</label>
-                <select id="client-procedure" class="form-select">
-                  <option value="">-- Выберите процедуру или консультацию --</option>
-                  <option value="Первичная диагностика и консультация">Первичная диагностика и консультация</option>
-                  <option value="Атравматичный уход для сухой кожи с куперозом">Атравматичный уход для сухой кожи с куперозом</option>
-                  <option value="Атравматичный уход для жирной кожи">Атравматичный уход для жирной кожи</option>
-                  <option value="Атравматичный уход при розацеа">Атравматичный уход при розацеа</option>
-                  <option value="Биолифтинг лица">Биолифтинг лица</option>
-                  <option value="Уход за чувствительной кожей век">Уход за чувствительной кожей век</option>
-                  <option value="Дренажный уход за веками от отёков">Дренажный уход за веками от отёков</option>
-                  <option value="Мануальная и ультразвуковая чистка">Мануальная и ультразвуковая чистка</option>
-                  <option value="Всесезонный пилинг">Всесезонный пилинг</option>
-                  <option value="Отбеливающая программа">Отбеливающая программа</option>
-                  <option value="Подарочный сертификат">Подарочный сертификат (от 500 до 5 000 ₽)</option>
-                  <option value="Другая процедура">Другая процедура (уточнить по телефону)</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="client-comment" class="form-label">Комментарий или пожелания</label>
-                <textarea id="client-comment" class="form-textarea" rows="3" placeholder="Например: есть аллергия на цитрусовые, удобнее прийти после 18:00..."></textarea>
-              </div>
-
-              <p class="form-privacy-note">
-                Нажимая на кнопку, вы даете согласие на обработку персональных данных в соответствии с политикой конфиденциальности.
-              </p>
-
-              <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 8px;">
-                Отправить заявку на запись
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
   <!-- ========================================================================
        FOOTER
        ======================================================================== -->
-  <footer class="site-footer">
+  <footer class="site-footer" id="contacts">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand-col">
           <div class="brand">
-            <img src="img/assets/logo-oblaka.png" alt="Облака" class="brand-logo" width="36" height="36">
-            <span class="brand-title">ОБЛАКА</span>
+            <img src="img/assets/logo-oblaka.png" alt="Облака" class="brand-logo" width="38" height="38">
+            <div>
+              <span class="brand-title">ОБЛАКА</span>
+              <span class="brand-subtitle" style="display:block; font-size: 11px; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.06em;">Косметологический кабинет</span>
+            </div>
           </div>
           <p class="footer-desc">
-            Лицензированный кабинет эстетической и врачебной косметологии в Твери. Здоровье, молодость и естественная красота вашей кожи.
+            Кабинет врачебной и эстетической косметологии Галины Игнатьевой в Ульяновске. Здоровая, сияющая кожа без агрессивного воздействия и стресса.
           </p>
         </div>
 
         <div>
-          <h4 class="footer-col-title">Процедуры</h4>
+          <h4 class="footer-col-title">Услуги</h4>
           <ul class="footer-links">
-            <li><a href="#services" class="footer-link">Атравматичные уходы</a></li>
-            <li><a href="#services" class="footer-link">Терапия розацеа и купероза</a></li>
-            <li><a href="#services" class="footer-link">Биолифтинг</a></li>
-            <li><a href="#services" class="footer-link">Уход за кожей век</a></li>
-            <li><a href="#services" class="footer-link">Всесезонные пилинги</a></li>
+            <li><a href="#prices" class="footer-link">Комплексные программы</a></li>
+            <li><a href="#prices" class="footer-link">Всесезонные пилинги</a></li>
+            <li><a href="#prices" class="footer-link">Чистки лица</a></li>
+            <li><a href="#prices" class="footer-link">Маски и сыворотки</a></li>
+            <li><a href="#prices" class="footer-link">Уход за кожей век</a></li>
+            <li><a href="#prices" class="footer-link">Оформление бровей и ресниц</a></li>
           </ul>
         </div>
 
         <div>
-          <h4 class="footer-col-title">Пациентам</h4>
+          <h4 class="footer-col-title">Информация</h4>
           <ul class="footer-links">
-            <li><a href="#prices" class="footer-link">Прайс-лист</a></li>
-            <li><a href="#doctor" class="footer-link">О враче</a></li>
-            <li><a href="#certs" class="footer-link">Лицензия и нормы</a></li>
-            <li><a href="#faq" class="footer-link">Вопросы и ответы</a></li>
-            <li><a href="#reviews" class="footer-link">Отзывы</a></li>
+            <li><a href="#services" class="footer-link">Каталог процедур</a></li>
+            <li><a href="#certificates" class="footer-link">Подарочные сертификаты</a></li>
+            <li><a href="#doctor" class="footer-link">О специалисте</a></li>
+            <li><a href="#cosmetics" class="footer-link">Космецевтика</a></li>
+            <li><a href="#certs" class="footer-link">Безопасность и стандарты</a></li>
+            <li><a href="#reviews" class="footer-link">Отзывы клиентов</a></li>
+            <li><a href="#faq" class="footer-link">Частые вопросы</a></li>
           </ul>
         </div>
 
         <div>
           <h4 class="footer-col-title">Контакты</h4>
           <ul class="footer-links">
-            <li><a href="tel:+79201526458" class="footer-link" style="font-weight: 700; color: var(--ink-dark);">+7 (920) 152-64-58</a></li>
-            <li><span class="footer-link">г. Тверь, ул. Л. Базановой, 20</span></li>
-            <li><span class="footer-link">Пн–Сб: 09:00 – 20:00</span></li>
+            <li><a href="tel:+79374524352" class="footer-link" style="font-weight: 700; font-size: 16px; color: var(--ink-dark);">+7 (937) 452-43-52</a></li>
+            <li><span class="footer-link">2-й пер. Мира, 26, Ульяновск</span></li>
+            <li><span class="footer-link">Пн–Сб: 10:00 – 20:00</span></li>
+            <li><span class="footer-link">Вс: по предварительной записи</span></li>
           </ul>
         </div>
       </div>
 
+      <!-- Social Messenger Bar -->
+      <div class="footer-social-bar reveal-item">
+        <div class="footer-social-title">
+          Свяжитесь с нами в удобном мессенджере:
+        </div>
+        <div class="footer-social-list">
+          <a href="https://vk.ru/salon__oblaka" target="_blank" rel="noopener noreferrer" class="footer-social-pill" aria-label="ВКонтакте">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M15.07 2H8.93C4.84 2 2 4.84 2 8.93v6.14C2 19.16 4.84 22 8.93 22h6.14c4.09 0 6.93-2.84 6.93-6.93V8.93C22 4.84 19.16 2 15.07 2zm3.38 13.91h-1.61c-.61 0-.8-.49-1.89-1.58-.96-.94-1.38-1.06-1.62-1.06-.34 0-.44.1-.44.57v1.49c0 .39-.12.58-1.17.58-1.73 0-3.65-1.05-5.01-3.02C6.31 9.88 5.7 7.74 5.7 7.28c0-.23.09-.44.53-.44h1.61c.4 0 .55.18.7.6 1.05 3.07 2.8 5.76 3.52 5.76.27 0 .39-.12.39-.79V9.75c-.08-1.42-.83-1.54-.83-2.05 0-.22.18-.44.47-.44h2.53c.35 0 .47.18.47.6v3.66c0 .4.18.53.3.53.25 0 .46-.14.93-.61 1.45-1.63 2.49-4.14 2.49-4.14.13-.27.35-.44.75-.44h1.61c.49 0 .6.25.49.6-.26.89-2.06 3.53-2.06 3.53-.2.32-.28.46 0 .83.2.27.87.85 1.32 1.37.82.95 1.45 1.74 1.62 2.29.17.55-.1.82-.67.82z"/>
+            </svg>
+            <span>ВКонтакте</span>
+          </a>
+          <a href="https://wa.me/79374524352?" target="_blank" rel="noopener noreferrer" class="footer-social-pill" aria-label="WhatsApp">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            <span>WhatsApp</span>
+          </a>
+          <a href="https://viber.click/79374524352" target="_blank" rel="noopener noreferrer" class="footer-social-pill" aria-label="Viber">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19.78 3.59A15.34 15.34 0 0012 1.44C5.64 1.44 1.63 5.11 1.63 11.02c0 3.23 1.25 5.8 3.44 7.29l-.65 3.03a.75.75 0 001.07.82l3.75-1.92c.9.22 1.83.33 2.76.33 6.36 0 10.37-3.67 10.37-9.58a14.28 14.28 0 00-2.59-7.4zm-2.04 11.96c-.34.96-1.74 1.86-2.5 1.95-.71.08-1.57.12-4.57-1.12-3.83-1.59-6.3-5.54-6.5-5.8-.19-.26-1.55-2.07-1.55-3.95s.98-2.8 1.33-3.18c.35-.38.77-.47 1.03-.47.26 0 .52.01.75.02.24.01.57-.09.89.68.34.82 1.15 2.82 1.25 3.03.1.21.17.46.03.73-.14.28-.21.45-.42.7-.21.24-.44.54-.63.73-.21.21-.43.44-.19.86.25.41 1.1 1.81 2.36 2.93 1.62 1.44 2.99 1.89 3.41 2.1.42.21.67.17.92-.11.25-.29 1.07-1.25 1.36-1.68.29-.43.58-.36.98-.21.4.14 2.54 1.2 2.98 1.42.44.22.73.33.84.51.11.19.11 1.08-.23 2.04z"/>
+            </svg>
+            <span>Viber</span>
+          </a>
+        </div>
+      </div>
+
       <div class="footer-bottom">
-        <div>© 2026 Косметологический кабинет «Облака». Все права защищены.</div>
+        <div>© 2026 Косметологический кабинет «Облака» Галины Игнатьевой. Все права защищены.</div>
         <div class="footer-license-note">
-          Медицинская лицензия № ЛО-69-01-002418. Имеются противопоказания, необходима консультация специалиста.
+          Имеются противопоказания, необходима консультация специалиста.
         </div>
       </div>
     </div>
   </footer>
 
-  <!-- Toast Notification -->
-  <div class="toast-banner" id="toast-banner" role="alert" aria-live="polite">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--bg-mint);"><polyline points="20 6 9 17 4 12"></polyline></svg>
-    <span id="toast-message">Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.</span>
-  </div>
-
-  <!-- Mobile Floating CTA -->
-  <div class="mobile-float-cta">
-    <a href="#booking" class="btn btn-primary">
-      Записаться на приём
-    </a>
-  </div>
+  
 
   <!-- ========================================================================
        SCRIPTS: Interactions, Filters, Tabs, FAQ, Booking
@@ -2937,56 +3067,21 @@
       });
     });
 
-    // 5. Select Procedure into Form
-    function selectProcedure(procedureName) {
-      const selectElem = document.getElementById('client-procedure');
-      if (selectElem) {
-        let found = false;
-        for (let i = 0; i < selectElem.options.length; i++) {
-          if (selectElem.options[i].text.toLowerCase().includes(procedureName.toLowerCase()) || 
-              procedureName.toLowerCase().includes(selectElem.options[i].text.toLowerCase())) {
-            selectElem.selectedIndex = i;
-            found = true;
-            break;
-          }
+    // Scroll Reveal Observer
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
         }
-        if (!found) {
-          // Add custom option or select first matching
-          selectElem.value = procedureName;
-        }
-      }
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: '0px 0px -40px 0px'
+    });
 
-      // Smooth scroll to booking
-      const bookingSec = document.getElementById('booking');
-      if (bookingSec) {
-        bookingSec.scrollIntoView({ behavior: 'smooth' });
-      }
+    document.querySelectorAll('.reveal-item').forEach(el => revealObserver.observe(el));
 
-      showToast(`Выбрана процедура: ${procedureName}. Укажите ваши контакты для записи.`);
-    }
-
-    // 6. Form Submission & Toast
-    function handleFormSubmit(event) {
-      event.preventDefault();
-      const name = document.getElementById('client-name').value;
-      const phone = document.getElementById('client-phone').value;
-      const procedure = document.getElementById('client-procedure').value || 'Консультация';
-
-      showToast(`Спасибо, ${name}! Заявка на «${procedure}» принята. Мы свяжемся с вами по номеру ${phone}.`);
-      document.getElementById('appointment-form').reset();
-    }
-
-    function showToast(message) {
-      const toast = document.getElementById('toast-banner');
-      const msgElem = document.getElementById('toast-message');
-      if (toast && msgElem) {
-        msgElem.textContent = message;
-        toast.classList.add('show');
-        setTimeout(() => {
-          toast.classList.remove('show');
-        }, 5000);
-      }
-    }
   </script>
 </body>
 </html>
