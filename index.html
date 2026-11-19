@@ -2089,7 +2089,7 @@
           <article class="service-item" data-category="eyes">
             <div class="service-thumb">
               <span class="badge-pill mint service-category-badge">Кожа век</span>
-              <img src="img/s10-1.jpg" alt="Дренажный уход за кожей век" loading="lazy">
+              <img src="img/assets/stock/treatment.jpg" alt="Лимфодренажный уход за кожей век от отёков" loading="lazy">
             </div>
             <div class="service-body">
               <h3 class="service-name">Лимфодренажный уход за кожей век от отёков</h3>
@@ -2170,40 +2170,50 @@
     </section>
 
     <!-- ========================================================================
-         CONTRAST STATEMENT BANNER (Solus Dark Forest Green Element)
+         GIFT CERTIFICATES (от 500 до 5 000 рублей)
          ======================================================================== -->
-    <section class="section-wrap" style="padding-top: 0; padding-bottom: 0;">
+    <section class="section-wrap" id="certificates" style="padding-top: 0; padding-bottom: 0;">
       <div class="container">
-        <div class="contrast-statement">
+        <div class="contrast-statement" style="background: linear-gradient(135deg, #132A22 0%, #1A392F 100%);">
           <div class="contrast-content">
-            <span class="badge-pill light">Клинический стандарт</span>
-            <h2 class="contrast-title">Диагностика кожи перед каждой процедурой</h2>
+            <span class="badge-pill light">Подарочные сертификаты</span>
+            <h2 class="contrast-title">Подарите заботу, красоту и сияние</h2>
             <p class="contrast-text">
-              Мы не навязываем шаблонные услуги. В кабинете «Облака» план терапии составляется строго на основе дерматоскопического анализа текущего состояния эпидермиса, сосудистой сетки и уровня увлажненности.
+              Подарочный сертификат в косметологический кабинет «Облака» — идеальный знак внимания для близких. Сертификат действует на любые процедуры: атравматичные уходы, чистки, пилинги, биолифтинг или профессиональную косметику.
             </p>
+
+            <div class="cert-denominations" style="display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 12px 0;">
+              <span class="badge-pill light" style="font-size: 13px; padding: 8px 16px;">500 ₽</span>
+              <span class="badge-pill light" style="font-size: 13px; padding: 8px 16px;">1 000 ₽</span>
+              <span class="badge-pill light" style="font-size: 13px; padding: 8px 16px;">2 000 ₽</span>
+              <span class="badge-pill light" style="font-size: 13px; padding: 8px 16px;">3 000 ₽</span>
+              <span class="badge-pill light" style="font-size: 13px; padding: 8px 16px;">5 000 ₽</span>
+            </div>
 
             <ul class="contrast-points">
               <li class="contrast-point-item">
                 <div class="check-circle">✓</div>
-                <span>Бесплатная первичная консультация при проведении процедуры</span>
+                <span>Номиналы от 500 до 5 000 рублей или на любую процедуру по выбору</span>
               </li>
               <li class="contrast-point-item">
                 <div class="check-circle">✓</div>
-                <span>Грамотный подбор домашней аптечной космецевтики без лишних трат</span>
+                <span>Стильный печатный сертификат в фирменном конверте или электронный PDF</span>
               </li>
               <li class="contrast-point-item">
                 <div class="check-circle">✓</div>
-                <span>Протоколы ведения сложных состояний: розацеа, купероз, акне, гиперкератоз</span>
+                <span>Срок действия — 6 месяцев, возможность доплаты при выборе более дорогой программы</span>
               </li>
             </ul>
 
             <div style="margin-top: 8px;">
-              <a href="#booking" class="btn btn-light">Записаться на диагностику</a>
+              <button class="btn btn-light" onclick="selectProcedure('Подарочный сертификат')">
+                Оформить сертификат
+              </button>
             </div>
           </div>
 
-          <div class="contrast-media">
-            <img src="img/assets/stock/cabinet.jpg" alt="Кабинет косметологии Облака Тверь" loading="lazy">
+          <div class="contrast-media" style="background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center;">
+            <img src="img/s10-1.jpg" alt="Подарочные сертификаты косметологического кабинета Облака от 500 до 5000 рублей" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
         </div>
       </div>
@@ -2428,12 +2438,12 @@
       <div class="container">
         <div class="specialist-card">
           <div class="specialist-photo-frame">
-            <img src="img/assets/photo-specialist.jpg" alt="Врач-косметолог кабинета Облака" loading="lazy">
+            <img src="img/galina.jpg" alt="Врач-косметолог кабинета Облака" loading="lazy">
           </div>
 
-          <div class="specialist-info">
-            <span class="badge-pill mint">Ведущий специалист</span>
-            <h2 class="specialist-name">Врачебная эстетика с заботой о вас</h2>
+          <div class="specialist-info" >
+            <span class="badge-pill mint" style="">Врачебная эстетика с заботой о вас</span>
+            <h2 class="specialist-name">Галина Игнатьева - <br> ведущий специалист</h2>
             <p class="specialist-creds">Врач-дерматовенеролог, косметолог · Стаж клинической практики более 12 лет</p>
             
             <p class="specialist-bio">
@@ -2749,6 +2759,7 @@
                   <option value="Мануальная и ультразвуковая чистка">Мануальная и ультразвуковая чистка</option>
                   <option value="Всесезонный пилинг">Всесезонный пилинг</option>
                   <option value="Отбеливающая программа">Отбеливающая программа</option>
+                  <option value="Подарочный сертификат">Подарочный сертификат (от 500 до 5 000 ₽)</option>
                   <option value="Другая процедура">Другая процедура (уточнить по телефону)</option>
                 </select>
               </div>
