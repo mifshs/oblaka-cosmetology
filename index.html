@@ -1417,6 +1417,51 @@
       transform: translateY(-4px);
     }
 
+    .review-stars {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .stars-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      color: #E5A024;
+    }
+
+    .review-card.dark .stars-group {
+      color: #FBBF24;
+    }
+
+    .stars-group svg {
+      width: 17px;
+      height: 17px;
+      fill: currentColor;
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
+
+    .review-card:hover .stars-group svg {
+      transform: scale(1.06);
+    }
+
+    .rating-badge {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink-dark);
+      background: rgba(19, 42, 34, 0.06);
+      padding: 3px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.02em;
+    }
+
+    .review-card.dark .rating-badge {
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.14);
+    }
+
     .review-card.peach { background-color: var(--bg-peach); }
     .review-card.dark {
       background-color: var(--ink-dark);
@@ -2689,6 +2734,16 @@
         <div class="reviews-grid">
           <!-- Review 1 (Peach) -->
           <div class="review-card reveal-item peach">
+            <div class="review-stars" aria-label="Оценка: 5 из 5 звезд">
+              <div class="stars-group">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <span class="rating-badge">5.0</span>
+            </div>
             <p class="review-text">
               «Галина-отличный специалист. Видно, что профессионал своего дела. Очень нравится, что всё доступно объясняет, понятно отвечает на всё интересующие вопросы».
             </p>
@@ -2703,6 +2758,16 @@
 
           <!-- Review 2 (Dark Pine Contrast) -->
           <div class="review-card reveal-item dark">
+            <div class="review-stars" aria-label="Оценка: 5 из 5 звезд">
+              <div class="stars-group">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <span class="rating-badge">5.0</span>
+            </div>
             <p class="review-text">
               «Прекрасный салон с отличным месторасположением.
                 Всегда приятно зайти в чистый холл с заготовленными тапками и бахилами.
@@ -2720,6 +2785,16 @@
 
           <!-- Review 3 (Mint) -->
           <div class="review-card reveal-item mint">
+            <div class="review-stars" aria-label="Оценка: 5 из 5 звезд">
+              <div class="stars-group">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <span class="rating-badge">5.0</span>
+            </div>
             <p class="review-text">
               «Салон с очень приятным и грамотным коллективом. Приятная и расслабляющая обстановка. Косметолог Галина настоящий профессионал и чудесница.».
             </p>
